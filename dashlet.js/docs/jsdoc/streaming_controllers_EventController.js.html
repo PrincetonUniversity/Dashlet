@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Dash JS Source: streaming/controllers/EventController.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.spacelab.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Dash JS</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-DashAdapter.html">DashAdapter</a></li><li><a href="module-DashMetrics.html">DashMetrics</a></li><li><a href="module-MediaPlayer.html">MediaPlayer</a></li><li><a href="module-OfflineController.html">OfflineController</a></li><li><a href="module-ProtectionController.html">ProtectionController</a></li><li><a href="module-Settings.html">Settings</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Errors.html">Errors</a></li><li><a href="MediaPlayerEvents.html">MediaPlayerEvents</a></li><li><a href="MssErrors.html">MssErrors</a></li><li><a href="OfflineErrors.html">OfflineErrors</a></li><li><a href="OfflineEvents.html">OfflineEvents</a></li><li><a href="ProtectionErrors.html">ProtectionErrors</a></li><li><a href="ProtectionEvents.html">ProtectionEvents</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="MediaPlayerEvents.html#event:AST_IN_FUTURE">MediaPlayerEvents#event:AST_IN_FUTURE</a></li><li><a href="MediaPlayerEvents.html#event:BUFFER_EMPTY">MediaPlayerEvents#event:BUFFER_EMPTY</a></li><li><a href="MediaPlayerEvents.html#event:BUFFER_LEVEL_STATE_CHANGED">MediaPlayerEvents#event:BUFFER_LEVEL_STATE_CHANGED</a></li><li><a href="MediaPlayerEvents.html#event:BUFFER_LOADED">MediaPlayerEvents#event:BUFFER_LOADED</a></li><li><a href="MediaPlayerEvents.html#event:CAN_PLAY">MediaPlayerEvents#event:CAN_PLAY</a></li><li><a href="MediaPlayerEvents.html#event:CAPTION_CONTAINER_RESIZE">MediaPlayerEvents#event:CAPTION_CONTAINER_RESIZE</a></li><li><a href="MediaPlayerEvents.html#event:CAPTION_RENDERED">MediaPlayerEvents#event:CAPTION_RENDERED</a></li><li><a href="MediaPlayerEvents.html#event:ERROR">MediaPlayerEvents#event:ERROR</a></li><li><a href="MediaPlayerEvents.html#event:FRAGMENT_LOADING_ABANDONED">MediaPlayerEvents#event:FRAGMENT_LOADING_ABANDONED</a></li><li><a href="MediaPlayerEvents.html#event:FRAGMENT_LOADING_COMPLETED">MediaPlayerEvents#event:FRAGMENT_LOADING_COMPLETED</a></li><li><a href="MediaPlayerEvents.html#event:FRAGMENT_LOADING_PROGRESS">MediaPlayerEvents#event:FRAGMENT_LOADING_PROGRESS</a></li><li><a href="MediaPlayerEvents.html#event:FRAGMENT_LOADING_STARTED">MediaPlayerEvents#event:FRAGMENT_LOADING_STARTED</a></li><li><a href="MediaPlayerEvents.html#event:GAP_CAUSED_SEEK_TO_PERIOD_END">MediaPlayerEvents#event:GAP_CAUSED_SEEK_TO_PERIOD_END</a></li><li><a href="MediaPlayerEvents.html#event:LOG">MediaPlayerEvents#event:LOG</a></li><li><a href="MediaPlayerEvents.html#event:MANIFEST_LOADED">MediaPlayerEvents#event:MANIFEST_LOADED</a></li><li><a href="MediaPlayerEvents.html#event:MANIFEST_VALIDITY_CHANGED">MediaPlayerEvents#event:MANIFEST_VALIDITY_CHANGED</a></li><li><a href="MediaPlayerEvents.html#event:METRIC_ADDED">MediaPlayerEvents#event:METRIC_ADDED</a></li><li><a href="MediaPlayerEvents.html#event:METRIC_CHANGED">MediaPlayerEvents#event:METRIC_CHANGED</a></li><li><a href="MediaPlayerEvents.html#event:METRIC_UPDATED">MediaPlayerEvents#event:METRIC_UPDATED</a></li><li><a href="MediaPlayerEvents.html#event:METRICS_CHANGED">MediaPlayerEvents#event:METRICS_CHANGED</a></li><li><a href="MediaPlayerEvents.html#event:PERIOD_SWITCH_COMPLETED">MediaPlayerEvents#event:PERIOD_SWITCH_COMPLETED</a></li><li><a href="MediaPlayerEvents.html#event:PERIOD_SWITCH_STARTED">MediaPlayerEvents#event:PERIOD_SWITCH_STARTED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_ENDED">MediaPlayerEvents#event:PLAYBACK_ENDED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_ERROR">MediaPlayerEvents#event:PLAYBACK_ERROR</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_METADATA_LOADED">MediaPlayerEvents#event:PLAYBACK_METADATA_LOADED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_NOT_ALLOWED">MediaPlayerEvents#event:PLAYBACK_NOT_ALLOWED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_PAUSED">MediaPlayerEvents#event:PLAYBACK_PAUSED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_PLAYING">MediaPlayerEvents#event:PLAYBACK_PLAYING</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_PROGRESS">MediaPlayerEvents#event:PLAYBACK_PROGRESS</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_RATE_CHANGED">MediaPlayerEvents#event:PLAYBACK_RATE_CHANGED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_SEEK_ASKED">MediaPlayerEvents#event:PLAYBACK_SEEK_ASKED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_SEEKED">MediaPlayerEvents#event:PLAYBACK_SEEKED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_SEEKING">MediaPlayerEvents#event:PLAYBACK_SEEKING</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_STALLED">MediaPlayerEvents#event:PLAYBACK_STALLED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_STARTED">MediaPlayerEvents#event:PLAYBACK_STARTED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_TIME_UPDATED">MediaPlayerEvents#event:PLAYBACK_TIME_UPDATED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_WAITING">MediaPlayerEvents#event:PLAYBACK_WAITING</a></li><li><a href="MediaPlayerEvents.html#event:QUALITY_CHANGE_RENDERED">MediaPlayerEvents#event:QUALITY_CHANGE_RENDERED</a></li><li><a href="MediaPlayerEvents.html#event:QUALITY_CHANGE_REQUESTED">MediaPlayerEvents#event:QUALITY_CHANGE_REQUESTED</a></li><li><a href="MediaPlayerEvents.html#event:SOURCE_INITIALIZED">MediaPlayerEvents#event:SOURCE_INITIALIZED</a></li><li><a href="MediaPlayerEvents.html#event:STREAM_INITIALIZED">MediaPlayerEvents#event:STREAM_INITIALIZED</a></li><li><a href="MediaPlayerEvents.html#event:STREAM_INITIALIZING">MediaPlayerEvents#event:STREAM_INITIALIZING</a></li><li><a href="MediaPlayerEvents.html#event:STREAM_TEARDOWN_COMPLETE">MediaPlayerEvents#event:STREAM_TEARDOWN_COMPLETE</a></li><li><a href="MediaPlayerEvents.html#event:STREAM_UPDATED">MediaPlayerEvents#event:STREAM_UPDATED</a></li><li><a href="MediaPlayerEvents.html#event:TEXT_TRACK_ADDED">MediaPlayerEvents#event:TEXT_TRACK_ADDED</a></li><li><a href="MediaPlayerEvents.html#event:TEXT_TRACKS_ADDED">MediaPlayerEvents#event:TEXT_TRACKS_ADDED</a></li><li><a href="MediaPlayerEvents.html#event:TRACK_CHANGE_RENDERED">MediaPlayerEvents#event:TRACK_CHANGE_RENDERED</a></li><li><a href="MediaPlayerEvents.html#event:TTML_PARSED">MediaPlayerEvents#event:TTML_PARSED</a></li><li><a href="MediaPlayerEvents.html#event:TTML_TO_PARSE">MediaPlayerEvents#event:TTML_TO_PARSE</a></li><li><a href="OfflineEvents.html#event:OFFLINE_RECORD_FINISHED">OfflineEvents#event:OFFLINE_RECORD_FINISHED</a></li><li><a href="OfflineEvents.html#event:OFFLINE_RECORD_LOADEDMETADATA">OfflineEvents#event:OFFLINE_RECORD_LOADEDMETADATA</a></li><li><a href="OfflineEvents.html#event:OFFLINE_RECORD_STARTED">OfflineEvents#event:OFFLINE_RECORD_STARTED</a></li><li><a href="OfflineEvents.html#event:OFFLINE_RECORD_STOPPED">OfflineEvents#event:OFFLINE_RECORD_STOPPED</a></li><li><a href="ProtectionEvents.html#event:KEY_ADDED">ProtectionEvents#event:KEY_ADDED</a></li><li><a href="ProtectionEvents.html#event:KEY_ERROR">ProtectionEvents#event:KEY_ERROR</a></li><li><a href="ProtectionEvents.html#event:KEY_MESSAGE">ProtectionEvents#event:KEY_MESSAGE</a></li><li><a href="ProtectionEvents.html#event:KEY_SESSION_CLOSED">ProtectionEvents#event:KEY_SESSION_CLOSED</a></li><li><a href="ProtectionEvents.html#event:KEY_SESSION_CREATED">ProtectionEvents#event:KEY_SESSION_CREATED</a></li><li><a href="ProtectionEvents.html#event:KEY_SESSION_REMOVED">ProtectionEvents#event:KEY_SESSION_REMOVED</a></li><li><a href="ProtectionEvents.html#event:KEY_STATUSES_CHANGED">ProtectionEvents#event:KEY_STATUSES_CHANGED</a></li><li><a href="ProtectionEvents.html#event:KEY_SYSTEM_SELECTED">ProtectionEvents#event:KEY_SYSTEM_SELECTED</a></li><li><a href="ProtectionEvents.html#event:LICENSE_REQUEST_COMPLETE">ProtectionEvents#event:LICENSE_REQUEST_COMPLETE</a></li><li><a href="ProtectionEvents.html#event:PROTECTION_CREATED">ProtectionEvents#event:PROTECTION_CREATED</a></li><li><a href="ProtectionEvents.html#event:PROTECTION_DESTROYED">ProtectionEvents#event:PROTECTION_DESTROYED</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#Entities">Entities</a></li><li><a href="global.html#localforage">localforage</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: streaming/controllers/EventController.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">/**
+ * The copyright in this software is being made available under the BSD License,
+ * included below. This software may be subject to other third party and contributor
+ * rights, including patent rights, and no such rights are granted under this license.
+ *
+ * Copyright (c) 2013, Dash Industry Forum.
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
+ *  * Redistributions of source code must retain the above copyright notice, this
+ *  list of conditions and the following disclaimer.
+ *  * Redistributions in binary form must reproduce the above copyright notice,
+ *  this list of conditions and the following disclaimer in the documentation and/or
+ *  other materials provided with the distribution.
+ *  * Neither the name of Dash Industry Forum nor the names of its
+ *  contributors may be used to endorse or promote products derived from this software
+ *  without specific prior written permission.
+ *
+ *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY
+ *  EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ *  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ *  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+ *  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ *  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ *  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ *  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ *  POSSIBILITY OF SUCH DAMAGE.
+ */
+
+import FactoryMaker from '../../core/FactoryMaker';
+import Debug from '../../core/Debug';
+import EventBus from '../../core/EventBus';
+import Events from '../../core/events/Events';
+import XHRLoader from '../net/XHRLoader';
+
+function EventController() {
+
+    const MPD_RELOAD_SCHEME = 'urn:mpeg:dash:event:2012';
+    const MPD_RELOAD_VALUE = 1;
+
+    const MPD_CALLBACK_SCHEME = 'urn:mpeg:dash:event:callback:2015';
+    const MPD_CALLBACK_VALUE = 1;
+
+    const REFRESH_DELAY = 100;
+    const REMAINING_EVENTS_THRESHOLD = 300;
+
+    const context = this.context;
+    const eventBus = EventBus(context).getInstance();
+
+    let instance,
+        logger,
+        inlineEvents, // Holds all Inline Events not triggered yet
+        inbandEvents, // Holds all Inband Events not triggered yet
+        activeEvents, // Holds all Events currently running
+        eventInterval, // variable holding the setInterval
+        lastEventTimerCall,
+        manifestUpdater,
+        playbackController,
+        eventHandlingInProgress,
+        isStarted;
+
+    function setup() {
+        logger = Debug(context).getInstance().getLogger(instance);
+        _resetInitialSettings();
+    }
+
+    function checkConfig() {
+        if (!manifestUpdater || !playbackController) {
+            throw new Error('setConfig function has to be called previously');
+        }
+    }
+
+    function _resetInitialSettings() {
+        isStarted = false;
+        inlineEvents = {};
+        inbandEvents = {};
+        activeEvents = {};
+        eventInterval = null;
+        eventHandlingInProgress = false;
+        lastEventTimerCall = Date.now() / 1000;
+    }
+
+    function _stop() {
+        try {
+            if (eventInterval !== null &amp;&amp; isStarted) {
+                clearInterval(eventInterval);
+                eventInterval = null;
+                isStarted = false;
+                _onStopEventController();
+            }
+        } catch (e) {
+            throw e;
+        }
+    }
+
+    function start() {
+        try {
+            checkConfig();
+            logger.debug('Start Event Controller');
+            if (!isStarted &amp;&amp; !isNaN(REFRESH_DELAY)) {
+                isStarted = true;
+                eventInterval = setInterval(_onEventTimer, REFRESH_DELAY);
+            }
+        } catch (e) {
+            throw e;
+        }
+    }
+
+    /**
+     * Add events to the eventList. Events that are not in the mpd anymore but not triggered yet will still be deleted
+     * @param {Array.&lt;Object>} values
+     */
+    function addInlineEvents(values) {
+        try {
+            checkConfig();
+
+            if (values) {
+                for (let i = 0; i &lt; values.length; i++) {
+                    let event = values[i];
+                    inlineEvents[event.id] = event;
+                    logger.debug('Add inline event with id ' + event.id);
+                }
+            }
+            logger.debug(`Added ${values.length} inline events`);
+        } catch (e) {
+            throw e;
+        }
+    }
+
+    /**
+     * i.e. processing of any one event message box with the same id is sufficient
+     * @param {Array.&lt;Object>} values
+     */
+    function addInbandEvents(values) {
+        try {
+            checkConfig();
+
+            for (let i = 0; i &lt; values.length; i++) {
+                let event = values[i];
+                if (!(event.id in inbandEvents)) {
+                    if (event.eventStream.schemeIdUri === MPD_RELOAD_SCHEME &amp;&amp; inbandEvents[event.id] === undefined) {
+                        _handleManifestReloadEvent(event);
+                    }
+                    inbandEvents[event.id] = event;
+                    logger.debug('Add inband event with id ' + event.id);
+                } else {
+                    logger.debug('Repeated event with id ' + event.id);
+                }
+            }
+            _onEventTimer();
+        } catch (e) {
+            throw e;
+        }
+    }
+
+    function _handleManifestReloadEvent(event) {
+        try {
+            if (event.eventStream.value == MPD_RELOAD_VALUE) {
+                const timescale = event.eventStream.timescale || 1;
+                const validUntil = event.calculatedPresentationTime / timescale;
+                let newDuration;
+                if (event.calculatedPresentationTime == 0xFFFFFFFF) {//0xFF... means remaining duration unknown
+                    newDuration = NaN;
+                } else {
+                    newDuration = (event.calculatedPresentationTime + event.duration) / timescale;
+                }
+                logger.info('Manifest validity changed: Valid until: ' + validUntil + '; remaining duration: ' + newDuration);
+                eventBus.trigger(Events.MANIFEST_VALIDITY_CHANGED, {
+                    id: event.id,
+                    validUntil: validUntil,
+                    newDuration: newDuration,
+                    newManifestValidAfter: NaN //event.message_data - this is an arraybuffer with a timestring in it, but not used yet
+                });
+            }
+        } catch (e) {
+        }
+    }
+
+    /**
+     * Remove expired events from the list
+     */
+    function _removeEvents() {
+        try {
+            if (activeEvents) {
+                let currentVideoTime = playbackController.getTime();
+                let eventIds = Object.keys(activeEvents);
+
+                for (let i = 0; i &lt; eventIds.length; i++) {
+                    let eventId = eventIds[i];
+                    let event = activeEvents[eventId];
+                    if (event !== null &amp;&amp; (event.duration + event.calculatedPresentationTime) / event.eventStream.timescale &lt; currentVideoTime) {
+                        logger.debug('Remove Event ' + eventId + ' at time ' + currentVideoTime);
+                        event = null;
+                        delete activeEvents[eventId];
+                    }
+                }
+            }
+        } catch (e) {
+        }
+    }
+
+    /**
+     * Iterate through the eventList and trigger/remove the events
+     */
+    function _onEventTimer() {
+        try {
+            if (!eventHandlingInProgress) {
+                const currentVideoTime = playbackController.getTime();
+                let presentationTimeThreshold = (currentVideoTime - lastEventTimerCall);
+
+                // For dynamic streams lastEventTimeCall will be large in the first iteration. Avoid firing all events at once.
+                presentationTimeThreshold = lastEventTimerCall > 0 ? Math.max(0, presentationTimeThreshold) : 0;
+
+                _triggerEvents(inbandEvents, presentationTimeThreshold, currentVideoTime);
+                _triggerEvents(inlineEvents, presentationTimeThreshold, currentVideoTime);
+                _removeEvents();
+
+                lastEventTimerCall = currentVideoTime;
+            }
+            eventHandlingInProgress = false;
+        } catch (e) {
+            eventHandlingInProgress = false;
+        }
+    }
+
+    function _onStopEventController() {
+        try {
+            // EventController might be stopped before the period is over. Before we stop the event controller we check for events that needs to be triggered at the period boundary.
+            _triggerRemainingEvents(inbandEvents);
+            _triggerRemainingEvents(inlineEvents);
+        } catch (e) {
+
+        }
+    }
+
+    function _triggerEvents(events, presentationTimeThreshold, currentVideoTime) {
+        try {
+            if (events) {
+                let eventIds = Object.keys(events);
+
+                for (let i = 0; i &lt; eventIds.length; i++) {
+                    let eventId = eventIds[i];
+                    let event = events[eventId];
+
+                    if (event !== undefined) {
+                        const calculatedPresentationTimeInSeconds = event.calculatedPresentationTime / event.eventStream.timescale;
+
+                        if (calculatedPresentationTimeInSeconds &lt;= currentVideoTime &amp;&amp; calculatedPresentationTimeInSeconds + presentationTimeThreshold >= currentVideoTime) {
+                            _startEvent(eventId, event, events);
+                        } else if (_eventHasExpired(currentVideoTime, presentationTimeThreshold, calculatedPresentationTimeInSeconds) || _eventIsInvalid(event)) {
+                            logger.debug(`Deleting event ${eventId} as it is expired or invalid`);
+                            delete events[eventId];
+                        }
+                    }
+                }
+            }
+        } catch (e) {
+        }
+    }
+
+    function _eventHasExpired(currentVideoTime, presentationTimeThreshold, calculatedPresentationTimeInSeconds) {
+        try {
+            return currentVideoTime - presentationTimeThreshold > calculatedPresentationTimeInSeconds;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    function _eventIsInvalid(event) {
+        try {
+            const periodEndTime = event.eventStream.period.start + event.eventStream.period.duration;
+
+            return event.calculatedPresentationTime / 1000 > periodEndTime;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    function _triggerRemainingEvents(events) {
+        try {
+            const eventIds = Object.keys(events);
+            const currentTime = playbackController.getTime();
+
+            if (!eventIds || eventIds.length === 0) {
+                return;
+            }
+
+            const periodDuration = events[eventIds[0]].eventStream &amp;&amp; events[eventIds[0]].eventStream.period &amp;&amp; !isNaN(events[eventIds[0]].eventStream.period.duration) ? events[eventIds[0]].eventStream.period.duration : NaN;
+            const periodStart = events[eventIds[0]].eventStream &amp;&amp; events[eventIds[0]].eventStream.period &amp;&amp; !isNaN(events[eventIds[0]].eventStream.period.start) ? events[eventIds[0]].eventStream.period.start : NaN;
+
+            if (isNaN(periodDuration) || isNaN(periodStart)) {
+                return;
+            }
+
+            eventIds.forEach((eventId) => {
+                const event = events[eventId];
+                const calculatedPresentationTimeInSeconds = event.calculatedPresentationTime / event.eventStream.timescale;
+
+                if (Math.abs(calculatedPresentationTimeInSeconds - currentTime) &lt; REMAINING_EVENTS_THRESHOLD) {
+                    _startEvent(eventId, event, events);
+                }
+            });
+        } catch (e) {
+
+        }
+    }
+
+    function _startEvent(eventId, event, events) {
+        try {
+            const currentVideoTime = playbackController.getTime();
+
+            if (event.duration > 0) {
+                activeEvents[eventId] = event;
+            }
+
+            if (event.eventStream.schemeIdUri === MPD_RELOAD_SCHEME &amp;&amp; event.eventStream.value == MPD_RELOAD_VALUE) {
+                if (event.duration !== 0 || event.presentationTimeDelta !== 0) { //If both are set to zero, it indicates the media is over at this point. Don't reload the manifest.
+                    logger.debug(`Starting manifest refresh event ${eventId} at ${currentVideoTime}`);
+                    _refreshManifest();
+                }
+            } else if (event.eventStream.schemeIdUri === MPD_CALLBACK_SCHEME &amp;&amp; event.eventStream.value == MPD_CALLBACK_VALUE) {
+                logger.debug(`Starting callback event ${eventId} at ${currentVideoTime}`);
+                _sendCallbackRequest(event.messageData);
+            } else {
+                logger.debug(`Starting event ${eventId} at ${currentVideoTime}`);
+                eventBus.trigger(event.eventStream.schemeIdUri, {event: event});
+            }
+
+            delete events[eventId];
+        } catch (e) {
+        }
+    }
+
+    function _refreshManifest() {
+        try {
+            checkConfig();
+            manifestUpdater.refreshManifest();
+        } catch (e) {
+        }
+    }
+
+    function _sendCallbackRequest(url) {
+        try {
+            let loader = XHRLoader(context).create({});
+            loader.load({
+                method: 'get',
+                url: url,
+                request: {
+                    responseType: 'arraybuffer'
+                }
+            });
+        } catch (e) {
+            throw e;
+        }
+    }
+
+    function setConfig(config) {
+        try {
+            if (!config) {
+                return;
+            }
+
+            if (config.manifestUpdater) {
+                manifestUpdater = config.manifestUpdater;
+            }
+
+            if (config.playbackController) {
+                playbackController = config.playbackController;
+            }
+        } catch (e) {
+            throw e;
+        }
+    }
+
+    function reset() {
+        _stop();
+        _resetInitialSettings();
+    }
+
+    instance = {
+        addInlineEvents,
+        addInbandEvents,
+        start,
+        setConfig,
+        reset
+    };
+
+    setup();
+
+    return instance;
+}
+
+EventController.__dashjs_factory_name = 'EventController';
+export default FactoryMaker.getSingletonFactory(EventController);
+</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	<h3>Dash.js <a href="http://gruntjs.com/"><img src="https://gruntjs.com/cdn/builtwith.png" alt="Built with Grunt"></a></h3>
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a>
+	
+		on Sat Nov 14th 2020
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

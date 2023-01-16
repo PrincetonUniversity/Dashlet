@@ -1,0 +1,3833 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Dash JS Module: Settings</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.spacelab.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Dash JS</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-DashAdapter.html">DashAdapter</a></li><li><a href="module-DashMetrics.html">DashMetrics</a></li><li><a href="module-MediaPlayer.html">MediaPlayer</a></li><li><a href="module-OfflineController.html">OfflineController</a></li><li><a href="module-ProtectionController.html">ProtectionController</a></li><li><a href="module-Settings.html">Settings</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Errors.html">Errors</a></li><li><a href="MediaPlayerEvents.html">MediaPlayerEvents</a></li><li><a href="MssErrors.html">MssErrors</a></li><li><a href="OfflineErrors.html">OfflineErrors</a></li><li><a href="OfflineEvents.html">OfflineEvents</a></li><li><a href="ProtectionErrors.html">ProtectionErrors</a></li><li><a href="ProtectionEvents.html">ProtectionEvents</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="MediaPlayerEvents.html#event:AST_IN_FUTURE">MediaPlayerEvents#event:AST_IN_FUTURE</a></li><li><a href="MediaPlayerEvents.html#event:BUFFER_EMPTY">MediaPlayerEvents#event:BUFFER_EMPTY</a></li><li><a href="MediaPlayerEvents.html#event:BUFFER_LEVEL_STATE_CHANGED">MediaPlayerEvents#event:BUFFER_LEVEL_STATE_CHANGED</a></li><li><a href="MediaPlayerEvents.html#event:BUFFER_LOADED">MediaPlayerEvents#event:BUFFER_LOADED</a></li><li><a href="MediaPlayerEvents.html#event:CAN_PLAY">MediaPlayerEvents#event:CAN_PLAY</a></li><li><a href="MediaPlayerEvents.html#event:CAPTION_CONTAINER_RESIZE">MediaPlayerEvents#event:CAPTION_CONTAINER_RESIZE</a></li><li><a href="MediaPlayerEvents.html#event:CAPTION_RENDERED">MediaPlayerEvents#event:CAPTION_RENDERED</a></li><li><a href="MediaPlayerEvents.html#event:ERROR">MediaPlayerEvents#event:ERROR</a></li><li><a href="MediaPlayerEvents.html#event:FRAGMENT_LOADING_ABANDONED">MediaPlayerEvents#event:FRAGMENT_LOADING_ABANDONED</a></li><li><a href="MediaPlayerEvents.html#event:FRAGMENT_LOADING_COMPLETED">MediaPlayerEvents#event:FRAGMENT_LOADING_COMPLETED</a></li><li><a href="MediaPlayerEvents.html#event:FRAGMENT_LOADING_PROGRESS">MediaPlayerEvents#event:FRAGMENT_LOADING_PROGRESS</a></li><li><a href="MediaPlayerEvents.html#event:FRAGMENT_LOADING_STARTED">MediaPlayerEvents#event:FRAGMENT_LOADING_STARTED</a></li><li><a href="MediaPlayerEvents.html#event:GAP_CAUSED_SEEK_TO_PERIOD_END">MediaPlayerEvents#event:GAP_CAUSED_SEEK_TO_PERIOD_END</a></li><li><a href="MediaPlayerEvents.html#event:LOG">MediaPlayerEvents#event:LOG</a></li><li><a href="MediaPlayerEvents.html#event:MANIFEST_LOADED">MediaPlayerEvents#event:MANIFEST_LOADED</a></li><li><a href="MediaPlayerEvents.html#event:MANIFEST_VALIDITY_CHANGED">MediaPlayerEvents#event:MANIFEST_VALIDITY_CHANGED</a></li><li><a href="MediaPlayerEvents.html#event:METRIC_ADDED">MediaPlayerEvents#event:METRIC_ADDED</a></li><li><a href="MediaPlayerEvents.html#event:METRIC_CHANGED">MediaPlayerEvents#event:METRIC_CHANGED</a></li><li><a href="MediaPlayerEvents.html#event:METRIC_UPDATED">MediaPlayerEvents#event:METRIC_UPDATED</a></li><li><a href="MediaPlayerEvents.html#event:METRICS_CHANGED">MediaPlayerEvents#event:METRICS_CHANGED</a></li><li><a href="MediaPlayerEvents.html#event:PERIOD_SWITCH_COMPLETED">MediaPlayerEvents#event:PERIOD_SWITCH_COMPLETED</a></li><li><a href="MediaPlayerEvents.html#event:PERIOD_SWITCH_STARTED">MediaPlayerEvents#event:PERIOD_SWITCH_STARTED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_ENDED">MediaPlayerEvents#event:PLAYBACK_ENDED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_ERROR">MediaPlayerEvents#event:PLAYBACK_ERROR</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_METADATA_LOADED">MediaPlayerEvents#event:PLAYBACK_METADATA_LOADED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_NOT_ALLOWED">MediaPlayerEvents#event:PLAYBACK_NOT_ALLOWED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_PAUSED">MediaPlayerEvents#event:PLAYBACK_PAUSED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_PLAYING">MediaPlayerEvents#event:PLAYBACK_PLAYING</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_PROGRESS">MediaPlayerEvents#event:PLAYBACK_PROGRESS</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_RATE_CHANGED">MediaPlayerEvents#event:PLAYBACK_RATE_CHANGED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_SEEK_ASKED">MediaPlayerEvents#event:PLAYBACK_SEEK_ASKED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_SEEKED">MediaPlayerEvents#event:PLAYBACK_SEEKED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_SEEKING">MediaPlayerEvents#event:PLAYBACK_SEEKING</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_STALLED">MediaPlayerEvents#event:PLAYBACK_STALLED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_STARTED">MediaPlayerEvents#event:PLAYBACK_STARTED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_TIME_UPDATED">MediaPlayerEvents#event:PLAYBACK_TIME_UPDATED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_WAITING">MediaPlayerEvents#event:PLAYBACK_WAITING</a></li><li><a href="MediaPlayerEvents.html#event:QUALITY_CHANGE_RENDERED">MediaPlayerEvents#event:QUALITY_CHANGE_RENDERED</a></li><li><a href="MediaPlayerEvents.html#event:QUALITY_CHANGE_REQUESTED">MediaPlayerEvents#event:QUALITY_CHANGE_REQUESTED</a></li><li><a href="MediaPlayerEvents.html#event:SOURCE_INITIALIZED">MediaPlayerEvents#event:SOURCE_INITIALIZED</a></li><li><a href="MediaPlayerEvents.html#event:STREAM_INITIALIZED">MediaPlayerEvents#event:STREAM_INITIALIZED</a></li><li><a href="MediaPlayerEvents.html#event:STREAM_INITIALIZING">MediaPlayerEvents#event:STREAM_INITIALIZING</a></li><li><a href="MediaPlayerEvents.html#event:STREAM_TEARDOWN_COMPLETE">MediaPlayerEvents#event:STREAM_TEARDOWN_COMPLETE</a></li><li><a href="MediaPlayerEvents.html#event:STREAM_UPDATED">MediaPlayerEvents#event:STREAM_UPDATED</a></li><li><a href="MediaPlayerEvents.html#event:TEXT_TRACK_ADDED">MediaPlayerEvents#event:TEXT_TRACK_ADDED</a></li><li><a href="MediaPlayerEvents.html#event:TEXT_TRACKS_ADDED">MediaPlayerEvents#event:TEXT_TRACKS_ADDED</a></li><li><a href="MediaPlayerEvents.html#event:TRACK_CHANGE_RENDERED">MediaPlayerEvents#event:TRACK_CHANGE_RENDERED</a></li><li><a href="MediaPlayerEvents.html#event:TTML_PARSED">MediaPlayerEvents#event:TTML_PARSED</a></li><li><a href="MediaPlayerEvents.html#event:TTML_TO_PARSE">MediaPlayerEvents#event:TTML_TO_PARSE</a></li><li><a href="OfflineEvents.html#event:OFFLINE_RECORD_FINISHED">OfflineEvents#event:OFFLINE_RECORD_FINISHED</a></li><li><a href="OfflineEvents.html#event:OFFLINE_RECORD_LOADEDMETADATA">OfflineEvents#event:OFFLINE_RECORD_LOADEDMETADATA</a></li><li><a href="OfflineEvents.html#event:OFFLINE_RECORD_STARTED">OfflineEvents#event:OFFLINE_RECORD_STARTED</a></li><li><a href="OfflineEvents.html#event:OFFLINE_RECORD_STOPPED">OfflineEvents#event:OFFLINE_RECORD_STOPPED</a></li><li><a href="ProtectionEvents.html#event:KEY_ADDED">ProtectionEvents#event:KEY_ADDED</a></li><li><a href="ProtectionEvents.html#event:KEY_ERROR">ProtectionEvents#event:KEY_ERROR</a></li><li><a href="ProtectionEvents.html#event:KEY_MESSAGE">ProtectionEvents#event:KEY_MESSAGE</a></li><li><a href="ProtectionEvents.html#event:KEY_SESSION_CLOSED">ProtectionEvents#event:KEY_SESSION_CLOSED</a></li><li><a href="ProtectionEvents.html#event:KEY_SESSION_CREATED">ProtectionEvents#event:KEY_SESSION_CREATED</a></li><li><a href="ProtectionEvents.html#event:KEY_SESSION_REMOVED">ProtectionEvents#event:KEY_SESSION_REMOVED</a></li><li><a href="ProtectionEvents.html#event:KEY_STATUSES_CHANGED">ProtectionEvents#event:KEY_STATUSES_CHANGED</a></li><li><a href="ProtectionEvents.html#event:KEY_SYSTEM_SELECTED">ProtectionEvents#event:KEY_SYSTEM_SELECTED</a></li><li><a href="ProtectionEvents.html#event:LICENSE_REQUEST_COMPLETE">ProtectionEvents#event:LICENSE_REQUEST_COMPLETE</a></li><li><a href="ProtectionEvents.html#event:PROTECTION_CREATED">ProtectionEvents#event:PROTECTION_CREATED</a></li><li><a href="ProtectionEvents.html#event:PROTECTION_DESTROYED">ProtectionEvents#event:PROTECTION_DESTROYED</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#Entities">Entities</a></li><li><a href="global.html#localforage">localforage</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+			
+
+	<h1 class="page-title">Module: Settings</h1>
+<section>
+
+<header>
+    
+</header>
+
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>Define the configuration parameters of Dash.js MediaPlayer.</p></div>
+        
+
+        
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="core_Settings.js.html">core/Settings.js</a>,
+				 <a href="core_Settings.js.html#sunlight-1-line-37">line 37</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+	<dt class="tag-see method-doc-label method-doc-details-label">See:</dt>
+	<dd class="tag-see">
+		<ul>
+			<li><a href="module-Settings.html#~PlayerSettings"><code>PlayerSettings</code></a> for further information about the supported configuration properties</li>
+			</ul>
+	</dd>
+	
+
+	
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Type Definitions</h3>
+
+        <dl>
+                
+<hr>
+<dt class="name" id="~AbrSettings">
+    <h4 id="~AbrSettings">AbrSettings</h4>
+
+    
+</dt>
+<dd>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">Object</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    <dl>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>movingAverageMethod</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    "slidingWindow"
+                
+                </td>
+            
+
+            <td class="description last"><p>Sets the moving average method used for smoothing throughput estimates. Valid methods are
+&quot;slidingWindow&quot; and &quot;ewma&quot;. The call has no effect if an invalid method is passed.</p>
+<p>The sliding window moving average method computes the average throughput using the last four segments downloaded.
+If the stream is live (as opposed to VOD), then only the last three segments are used.
+If wide variations in throughput are detected, the number of segments can be dynamically increased to avoid oscillations.</p>
+<p>The exponentially weighted moving average (EWMA) method computes the average using exponential smoothing.
+Two separate estimates are maintained, a fast one with a three-second half life and a slow one with an eight-second half life.
+The throughput estimate at any time is the minimum of the fast and slow estimates.
+This allows a fast reaction to a bandwidth drop and prevents oscillations on bandwidth spikes.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ABRStrategy</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    "abrDynamic"
+                
+                </td>
+            
+
+            <td class="description last"><p>Returns the current ABR strategy being used: &quot;abrDynamic&quot;, &quot;abrBola&quot; or &quot;abrThroughput&quot;.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>bandwidthSafetyFactor</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    0.9
+                
+                </td>
+            
+
+            <td class="description last"><p>Standard ABR throughput rules multiply the throughput by this value. It should be between 0 and 1,
+with lower values giving less rebuffering (but also lower quality).</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>useDefaultABRRules</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"><p>Should the default ABR rules be used, or the custom ones added.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>useBufferOccupancyABR</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>Whether to use the BOLA abr rule.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>useDeadTimeLatency</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"><p>If true, only the download portion will be considered part of the download bitrate
+and latency will be regarded as static. If false, the reciprocal of the whole
+transfer time will be used.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>limitBitrateByPortal</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>If true, the size of the video portal will limit the max chosen video resolution.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>usePixelRatioInLimitBitrateByPortal</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>Sets whether to take into account the device's pixel ratio when defining the portal dimensions.
+Useful on, for example, retina displays.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>maxBitrate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-Settings.html#~AudioVideoSettings">module:Settings~AudioVideoSettings</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {audio: -1, video: -1}
+                
+                </td>
+            
+
+            <td class="description last"><p>The maximum bitrate that the ABR algorithms will choose. Use NaN for no limit.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>minBitrate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-Settings.html#~AudioVideoSettings">module:Settings~AudioVideoSettings</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {audio: -1, video: -1}
+                
+                </td>
+            
+
+            <td class="description last"><p>The minimum bitrate that the ABR algorithms will choose. Use NaN for no limit.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>maxRepresentationRatio</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-Settings.html#~AudioVideoSettings">module:Settings~AudioVideoSettings</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {audio: 1, video: 1}
+                
+                </td>
+            
+
+            <td class="description last"><p>When switching multi-bitrate content (auto or manual mode) this property specifies the maximum representation allowed,
+as a proportion of the size of the representation set.</p>
+<p>You can set or remove this cap at anytime before or during playback. To clear this setting you set the value to 1.</p>
+<p>If both this and maxAllowedBitrate are defined, maxAllowedBitrate is evaluated first, then maxAllowedRepresentation,
+i.e. the lowest value from executing these rules is used.</p>
+<p>This feature is typically used to reserve higher representations for playback only when connected over a fast connection.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>initialBitrate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-Settings.html#~AudioVideoSettings">module:Settings~AudioVideoSettings</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {audio: -1, video: -1}
+                
+                </td>
+            
+
+            <td class="description last"><p>Explicitly set the starting bitrate for audio or video</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>initialRepresentationRatio</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-Settings.html#~AudioVideoSettings">module:Settings~AudioVideoSettings</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {audio: -1, video: -1}
+                
+                </td>
+            
+
+            <td class="description last"><p>Explicitly set the initial representation ratio. If initalBitrate is specified, this is ignored.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>autoSwitchBitrate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-Settings.html#~AudioVideoSettings">module:Settings~AudioVideoSettings</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {audio: true, video: true}
+                
+                </td>
+            
+
+            <td class="description last"><p>Indicates whether the player should enable ABR algorithms to switch the bitrate.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</dl>
+
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="core_Settings.js.html">core/Settings.js</a>,
+				 <a href="core_Settings.js.html#sunlight-1-line-158">line 158</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+            
+                
+<hr>
+<dt class="name" id="~AudioVideoSettings">
+    <h4 id="~AudioVideoSettings">AudioVideoSettings</h4>
+
+    
+</dt>
+<dd>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">Object</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    <dl>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>audio</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+|
+
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Configuration for audio media type of tracks.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>video</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+|
+
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Configuration for video media type of tracks.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</dl>
+
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="core_Settings.js.html">core/Settings.js</a>,
+				 <a href="core_Settings.js.html#sunlight-1-line-346">line 346</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+            
+                
+<hr>
+<dt class="name" id="~CachingInfoSettings">
+    <h4 id="~CachingInfoSettings">CachingInfoSettings</h4>
+
+    
+</dt>
+<dd>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">Object</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    <dl>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>enable</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Enable or disable the caching feature.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ttl</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Time to live. A value defined in milliseconds representing how log to cache the settings for.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</dl>
+
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="core_Settings.js.html">core/Settings.js</a>,
+				 <a href="core_Settings.js.html#sunlight-1-line-340">line 340</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+            
+                
+<hr>
+<dt class="name" id="~CmcdSettings">
+    <h4 id="~CmcdSettings">CmcdSettings</h4>
+
+    
+</dt>
+<dd>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">Object</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    <dl>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>enable</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>Enable or disable the CMCD reporting.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>sid</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>GUID identifying the current playback session. Should be in UUID format. If not specified a UUID will be automatically generated.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cid</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>A unique string to identify the current content. If not specified it will be a hash of the MPD url.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>did</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    dash.js-cmcd-default-id
+                
+                </td>
+            
+
+            <td class="description last"><p>A unique string identifying the current device.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</dl>
+
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="core_Settings.js.html">core/Settings.js</a>,
+				 <a href="core_Settings.js.html#sunlight-1-line-364">line 364</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+            
+                
+<hr>
+<dt class="name" id="~DebugSettings">
+    <h4 id="~DebugSettings">DebugSettings</h4>
+
+    
+</dt>
+<dd>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">Object</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    <dl>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>logLevel</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    dashjs.Debug.LOG_LEVEL_WARNING
+                
+                </td>
+            
+
+            <td class="description last"><p>Sets up the log level. The levels are cumulative. For example, if you set the log level
+to dashjs.Debug.LOG_LEVEL_WARNING all warnings, errors and fatals will be logged. Possible values.</p>
+<ul>
+<li>dashjs.Debug.LOG_LEVEL_NONE<br/>
+No message is written in the browser console.
+<li>dashjs.Debug.LOG_LEVEL_FATAL<br/>
+Log fatal errors. An error is considered fatal when it causes playback to fail completely.
+<li>dashjs.Debug.LOG_LEVEL_ERROR<br/>
+Log error messages.
+<li>dashjs.Debug.LOG_LEVEL_WARNING<br/>
+Log warning messages.
+<li>dashjs.Debug.LOG_LEVEL_INFO<br/>
+Log info messages.
+<li>dashjs.Debug.LOG_LEVEL_DEBUG<br/>
+Log debug messages.
+</ul></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</dl>
+
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="core_Settings.js.html">core/Settings.js</a>,
+				 <a href="core_Settings.js.html#sunlight-1-line-131">line 131</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+            
+                
+<hr>
+<dt class="name" id="~PlayerSettings">
+    <h4 id="~PlayerSettings">PlayerSettings</h4>
+
+    
+</dt>
+<dd>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">Object</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    <dl>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>debug</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-Settings.html#~DebugSettings">module:Settings~DebugSettings</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Debug related settings</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>streaming</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-Settings.html#~StreamingSettings">module:Settings~StreamingSettings</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Streaming related settings</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</dl>
+
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="core_Settings.js.html">core/Settings.js</a>,
+				 <a href="core_Settings.js.html#sunlight-1-line-43">line 43</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">// Full settings object
+settings = {
+     debug: {
+         logLevel: Debug.LOG_LEVEL_WARNING
+     },
+     streaming: {
+         metricsMaxListDepth: 1000,
+         abandonLoadTimeout: 10000,
+         liveDelayFragmentCount: NaN,
+         liveDelay: null,
+         scheduleWhilePaused: true,
+         fastSwitchEnabled: false,
+         flushBufferAtTrackSwitch: false,
+         bufferPruningInterval: 10,
+         bufferToKeep: 20,
+         jumpGaps: true,
+         jumpLargeGaps: true,
+         smallGapLimit: 1.5,
+         stableBufferTime: 12,
+         bufferTimeAtTopQuality: 30,
+         bufferTimeAtTopQualityLongForm: 60,
+         longFormContentDurationThreshold: 600,
+         wallclockTimeUpdateInterval: 50,
+         lowLatencyEnabled: false,
+         keepProtectionMediaKeys: false,
+         useManifestDateHeaderTimeSource: true,
+         useSuggestedPresentationDelay: true,
+         useAppendWindow: true,
+         manifestUpdateRetryInterval: 100,
+         liveCatchUpMinDrift: 0.02,
+         liveCatchUpMaxDrift: 0,
+         liveCatchUpPlaybackRate: 0.5,
+         lastBitrateCachingInfo: { enabled: true, ttl: 360000 },
+         lastMediaSettingsCachingInfo: { enabled: true, ttl: 360000 },
+         cacheLoadThresholds: { video: 50, audio: 5 },
+         retryIntervals: {
+             MPD: 500,
+             XLinkExpansion: 500,
+             InitializationSegment: 1000,
+             IndexSegment: 1000,
+             MediaSegment: 1000,
+             BitstreamSwitchingSegment: 1000,
+             other: 1000,
+             lowLatencyReductionFactor: 10
+         },
+         retryAttempts: {
+             MPD: 3,
+             XLinkExpansion: 1,
+             InitializationSegment: 3,
+             IndexSegment: 3,
+             MediaSegment: 3,
+             BitstreamSwitchingSegment: 3,
+             other: 3,
+             lowLatencyMultiplyFactor: 5
+         },
+         abr: {
+             movingAverageMethod: Constants.MOVING_AVERAGE_SLIDING_WINDOW,
+             ABRStrategy: Constants.ABR_STRATEGY_DYNAMIC,
+             bandwidthSafetyFactor: 0.9,
+             useDefaultABRRules: true,
+             useBufferOccupancyABR: false,
+             useDeadTimeLatency: true,
+             limitBitrateByPortal: false,
+             usePixelRatioInLimitBitrateByPortal: false,
+             maxBitrate: { audio: -1, video: -1 },
+             minBitrate: { audio: -1, video: -1 },
+             maxRepresentationRatio: { audio: 1, video: 1 },
+             initialBitrate: { audio: -1, video: -1 },
+             initialRepresentationRatio: { audio: -1, video: -1 },
+             autoSwitchBitrate: { audio: true, video: true }
+         },
+         cmcd: {
+             enabled: false,
+             sid: null,
+             cid: null,
+             did: null
+         }
+     }
+}</pre>
+
+
+    
+</dd>
+
+            
+                
+<hr>
+<dt class="name" id="~RequestTypeSettings">
+    <h4 id="~RequestTypeSettings">RequestTypeSettings</h4>
+
+    
+</dt>
+<dd>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">Object</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    <dl>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>MPD</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Manifest type of requests</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>XLinkExpansion</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>XLink expansion type of requests</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>InitializationSegment</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Request to retrieve an initialization segment</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>IndexSegment</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Request to retrieve an index segment (SegmentBase)</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>MediaSegment</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Request to retrieve a media segment (video/audio/image/text chunk)</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>BitstreamSwitchingSegment</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Bitrate stream switching type of request</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>other</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Other type of request</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</dl>
+
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="core_Settings.js.html">core/Settings.js</a>,
+				 <a href="core_Settings.js.html#sunlight-1-line-352">line 352</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+            
+                
+<hr>
+<dt class="name" id="~StreamingSettings">
+    <h4 id="~StreamingSettings">StreamingSettings</h4>
+
+    
+</dt>
+<dd>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">Object</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    <dl>
+
+<table class="props table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>metricsMaxListDepth</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    1000
+                
+                </td>
+            
+
+            <td class="description last"><p>Maximum list depth of metrics.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>abandonLoadTimeout</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    10000
+                
+                </td>
+            
+
+            <td class="description last"><p>A timeout value in seconds, which during the ABRController will block switch-up events.
+This will only take effect after an abandoned fragment event occurs.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>liveDelayFragmentCount</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    NaN
+                
+                </td>
+            
+
+            <td class="description last"><p>Changing this value will lower or increase live stream latency.  The detected segment duration will be multiplied by this value
+to define a time in seconds to delay a live stream from the live edge. Lowering this value will lower latency but may decrease
+the player's ability to build a stable buffer.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>liveDelay</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Equivalent in seconds of setLiveDelayFragmentCount</p>
+<p>Lowering this value will lower latency but may decrease the player's ability to build a stable buffer.</p>
+<p>This value should be less than the manifest duration by a couple of segment durations to avoid playback issues</p>
+<p>If set, this parameter will take precedence over setLiveDelayFragmentCount and manifest info</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>scheduleWhilePaused</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"><p>Set to true if you would like dash.js to keep downloading fragments in the background
+when the video element is paused.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fastSwitchEnabled</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>When enabled, after an ABR up-switch in quality, instead of requesting and appending the next fragment
+at the end of the current buffer range it is requested and appended closer to the current time
+When enabled, The maximum time to render a higher quality is current time + (1.5 * fragment duration).</p>
+<p>Note, When ABR down-switch is detected, we appended the lower quality at the end of the buffer range to preserve the
+higher quality media for as long as possible.</p>
+<p>If enabled, it should be noted there are a few cases when the client will not replace inside buffer range but rather
+just append at the end.  1. When the buffer level is less than one fragment duration 2.  The client
+is in an Abandonment State due to recent fragment abandonment event.</p>
+<p>Known issues:</p>
+<ol>
+<li>In IE11 with auto switching off, if a user switches to a quality they can not download in time the
+fragment may be appended in the same range as the playhead or even in the past, in IE11 it may cause a stutter
+or stall in playback.</li>
+</ol></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>flushBufferAtTrackSwitch</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>When enabled, after a track switch and in case buffer is being replaced (see MEdiaPlayer.setTrackSwitchModeFor(MediaController.TRACK_SWITCH_MODE_ALWAYS_REPLACE)),
+the video element is flushed (seek at current playback time) once a segment of the new track is appended in buffer in order to force video decoder to play new track.
+This can be required on some devices like GoogleCast devices to make track switching functional. Otherwise track switching will be effective only once after previous
+buffered track is fully consumed.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>calcSegmentAvailabilityRangeFromTimeline</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"><p>Enable calculation of the DVR window for SegmentTimeline manifests based on the entries in <SegmentTimeline></p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>bufferPruningInterval</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    10
+                
+                </td>
+            
+
+            <td class="description last"><p>The interval of pruning buffer in sconds.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>bufferToKeep</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    20
+                
+                </td>
+            
+
+            <td class="description last"><p>This value influences the buffer pruning logic.
+Allows you to modify the buffer that is kept in source buffer in seconds.
+0|-----------bufferToPrune-----------|-----bufferToKeep-----|currentTime|</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>jumpGaps</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"><p>Sets whether player should jump small gaps (discontinuities) in the buffer.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>jumpLargeGaps</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"><p>Sets whether player should jump large gaps (discontinuities) in the buffer.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>smallGapLimit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    1.8
+                
+                </td>
+            
+
+            <td class="description last"><p>Time in seconds for a gap to be considered small.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>stableBufferTime</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    12
+                
+                </td>
+            
+
+            <td class="description last"><p>The time that the internal buffer target will be set to post startup/seeks (NOT top quality).</p>
+<p>When the time is set higher than the default you will have to wait longer
+to see automatic bitrate switches but will have a larger buffer which
+will increase stability.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>bufferTimeAtTopQuality</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    30
+                
+                </td>
+            
+
+            <td class="description last"><p>The time that the internal buffer target will be set to once playing the top quality.
+If there are multiple bitrates in your adaptation, and the media is playing at the highest
+bitrate, then we try to build a larger buffer at the top quality to increase stability
+and to maintain media quality.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>bufferTimeAtTopQualityLongForm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    60
+                
+                </td>
+            
+
+            <td class="description last"><p>The time that the internal buffer target will be set to once playing the top quality for long form content.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>longFormContentDurationThreshold</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    600
+                
+                </td>
+            
+
+            <td class="description last"><p>The threshold which defines if the media is considered long form content.
+This will directly affect the buffer targets when playing back at the top quality.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>wallclockTimeUpdateInterval</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    50
+                
+                </td>
+            
+
+            <td class="description last"><p>How frequently the wallclockTimeUpdated internal event is triggered (in milliseconds).</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>lowLatencyEnabled</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>Enable or disable low latency mode</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>keepProtectionMediaKeys</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>Set the value for the ProtectionController and MediaKeys life cycle. If true, the
+ProtectionController and then created MediaKeys and MediaKeySessions will be preserved during
+the MediaPlayer lifetime.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>useManifestDateHeaderTimeSource</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"><p>Allows you to enable the use of the Date Header, if exposed with CORS, as a timing source for live edge detection. The
+use of the date header will happen only after the other timing source that take precedence fail or are omitted as described.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>useSuggestedPresentationDelay</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"><p>Set to true if you would like to override the default live delay and honor the SuggestedPresentationDelay attribute in by the manifest.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>useAppendWindow</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"><p>Specifies if the appendWindow attributes of the MSE SourceBuffers should be set according to content duration from manifest.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>manifestUpdateRetryInterval</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    100
+                
+                </td>
+            
+
+            <td class="description last"><p>For live streams, set the interval-frequency in milliseconds at which
+dash.js will check if the current manifest is still processed before
+downloading the next manifest once the minimumUpdatePeriod time has</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>liveCatchUpMinDrift</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    0.02
+                
+                </td>
+            
+
+            <td class="description last"><p>Use this method to set the minimum latency deviation allowed before activating catch-up mechanism. In low latency mode,
+when the difference between the measured latency and the target one,
+as an absolute number, is higher than the one sets with this method, then dash.js increases/decreases
+playback rate until target latency is reached.</p>
+<p>LowLatencyMinDrift should be provided in seconds, and it uses values between 0.0 and 0.5.</p>
+<p>Note: Catch-up mechanism is only applied when playing low latency live streams.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>liveCatchUpMaxDrift</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last"><p>Use this method to set the maximum latency deviation allowed before dash.js to do a seeking to live position. In low latency mode,
+when the difference between the measured latency and the target one,
+as an absolute number, is higher than the one sets with this method, then dash.js does a seek to live edge position minus
+the target live delay.</p>
+<p>LowLatencyMaxDriftBeforeSeeking should be provided in seconds. If 0, then seeking operations won't be used for
+fixing latency deviations.</p>
+<p>Note: Catch-up mechanism is only applied when playing low latency live streams.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>liveCatchUpPlaybackRate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    0.5
+                
+                </td>
+            
+
+            <td class="description last"><p>Use this parameter to set the maximum catch up rate, as a percentage, for low latency live streams. In low latency mode,
+when measured latency is higher/lower than the target one,
+dash.js increases/decreases playback rate respectively up to (+/-) the percentage defined with this method until target is reached.</p>
+<p>Valid values for catch up rate are in range 0-0.5 (0-50%). Set it to 0 to turn off live catch up feature.</p>
+<p>Note: Catch-up mechanism is only applied when playing low latency live streams.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>liveCatchupLatencyThreshold</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    NaN
+                
+                </td>
+            
+
+            <td class="description last"><p>Use this parameter to set the maximum threshold for which live catch up is applied. For instance, if this value is set to 8 seconds,
+then live catchup is only applied if the current live latency is equal or below 8 seconds. The reason behind this parameter is to avoid an increase
+of the playback rate if the user seeks within the DVR window.</p>
+<p>If no value is specified this will be twice the maximum live delay. The maximum live delay is either specified in the manifest as part of a ServiceDescriptor or calculated the following:
+maximumLiveDelay = targetDelay + liveCatchupMinDrift</p>
+<p>Note: Catch-up mechanism is only applied when playing low latency live streams.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>lastBitrateCachingInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-Settings.html#~CachingInfoSettings">module:Settings~CachingInfoSettings</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {enabled: true, ttl: 360000}
+                
+                </td>
+            
+
+            <td class="description last"><p>Set to false if you would like to disable the last known bit rate from being stored during playback and used
+to set the initial bit rate for subsequent playback within the expiration window.</p>
+<p>The default expiration is one hour, defined in milliseconds. If expired, the default initial bit rate (closest to 1000 kbps) will be used
+for that session and a new bit rate will be stored during that session.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>lastMediaSettingsCachingInfo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-Settings.html#~CachingInfoSettings">module:Settings~CachingInfoSettings</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {enabled: true, ttl: 360000}
+                
+                </td>
+            
+
+            <td class="description last"><p>Set to false if you would like to disable the last known lang for audio (or camera angle for video) from being stored during playback and used
+to set the initial settings for subsequent playback within the expiration window.</p>
+<p>The default expiration is one hour, defined in milliseconds. If expired, the default settings will be used
+for that session and a new settings will be stored during that session.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cacheLoadThresholds</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-Settings.html#~AudioVideoSettings">module:Settings~AudioVideoSettings</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {video: 50, audio: 5}
+                
+                </td>
+            
+
+            <td class="description last"><p>For a given media type, the threshold which defines if the response to a fragment
+request is coming from browser cache or not.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>retryIntervals</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-Settings.html#~RequestTypeSettings">module:Settings~RequestTypeSettings</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Time in milliseconds of which to reload a failed file load attempt. For low latency mode these values are divided by lowLatencyReductionFactor.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>retryAttempts</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-Settings.html#~RequestTypeSettings">module:Settings~RequestTypeSettings</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Total number of retry attempts that will occur on a file load before it fails. For low latency mode these values are multiplied by lowLatencyMultiplyFactor.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>abr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-Settings.html#~AbrSettings">module:Settings~AbrSettings</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Adaptive Bitrate algorithm related settings.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cmcd</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-Settings.html#~CmcdSettings">module:Settings~CmcdSettings</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Settings related to Common Media Client Data reporting.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</dl>
+
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="core_Settings.js.html">core/Settings.js</a>,
+				 <a href="core_Settings.js.html#sunlight-1-line-203">line 203</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+            </dl>
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	<h3>Dash.js <a href="http://gruntjs.com/"><img src="https://gruntjs.com/cdn/builtwith.png" alt="Built with Grunt"></a></h3>
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a>
+	
+		on Sat Nov 14th 2020
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

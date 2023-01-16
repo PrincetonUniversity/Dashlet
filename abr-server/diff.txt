@@ -1,0 +1,35 @@
+53,55d52
+<         if "realtime" in path:
+<             return 0.1
+< 
+66d62
+< 
+104,105d99
+< 
+< row_addition = ['realtime', '100', '200000']
+113,115c107,108
+<         for i in range(nlen - 1):
+<             self.swipe_trace[i][1] = swipe_percentage[i+1] - swipe_percentage[i]
+<             self.swipe_trace[i][1] = min(self.swipe_trace[i][1], self.swipe_trace[i][0])
+---
+>         for i in range(nlen):
+>             self.swipe_trace[i][1] = self.swipe_trace[i][0] * swipe_percentage[i]
+129,132c122
+<                 if len(row) == 1:
+<                     row.extend(row_addition)
+<                 #     duration = 0.1
+<                 # else:
+---
+> 
+304,306d293
+<             # if player.last_chunk_finishtime - player.last_chunk_starttime == 0:
+<             #     tmp = 1
+< 
+600,602c587,589
+<     parser.add_argument('--playtrace', default="/home/acer/Documents/reverse-tiktok/data/tt-102-high/tt-102-high-play.csv", help='Play sequence')
+<     parser.add_argument('--swipetrace', default="/home/acer/Documents/reverse-tiktok/data/tt-102-high/tt-102-high-swipe-time.logxyz", help='Viewing trace')
+<     parser.add_argument('--networktrace', default="/home/acer/Documents/reverse-tiktok/traces/user-study/trace-high.down", help='The network trace')
+---
+>     parser.add_argument('--playtrace', default="/home/acer/Documents/reverse-tiktok/data/trace-17.5-swipe-5/trace-17.5-swipe-5-play.csv", help='Play sequence')
+>     parser.add_argument('--swipetrace', default="/home/acer/Documents/reverse-tiktok/traces/swipe/swipe-5.txt", help='Viewing trace')
+>     parser.add_argument('--networktrace', default="/home/acer/Documents/reverse-tiktok/traces/network/trace-17.5.down", help='The network trace')

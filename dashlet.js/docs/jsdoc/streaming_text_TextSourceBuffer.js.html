@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Dash JS Source: streaming/text/TextSourceBuffer.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.spacelab.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Dash JS</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-DashAdapter.html">DashAdapter</a></li><li><a href="module-DashMetrics.html">DashMetrics</a></li><li><a href="module-MediaPlayer.html">MediaPlayer</a></li><li><a href="module-OfflineController.html">OfflineController</a></li><li><a href="module-ProtectionController.html">ProtectionController</a></li><li><a href="module-Settings.html">Settings</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Errors.html">Errors</a></li><li><a href="MediaPlayerEvents.html">MediaPlayerEvents</a></li><li><a href="MssErrors.html">MssErrors</a></li><li><a href="OfflineErrors.html">OfflineErrors</a></li><li><a href="OfflineEvents.html">OfflineEvents</a></li><li><a href="ProtectionErrors.html">ProtectionErrors</a></li><li><a href="ProtectionEvents.html">ProtectionEvents</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="MediaPlayerEvents.html#event:AST_IN_FUTURE">MediaPlayerEvents#event:AST_IN_FUTURE</a></li><li><a href="MediaPlayerEvents.html#event:BUFFER_EMPTY">MediaPlayerEvents#event:BUFFER_EMPTY</a></li><li><a href="MediaPlayerEvents.html#event:BUFFER_LEVEL_STATE_CHANGED">MediaPlayerEvents#event:BUFFER_LEVEL_STATE_CHANGED</a></li><li><a href="MediaPlayerEvents.html#event:BUFFER_LOADED">MediaPlayerEvents#event:BUFFER_LOADED</a></li><li><a href="MediaPlayerEvents.html#event:CAN_PLAY">MediaPlayerEvents#event:CAN_PLAY</a></li><li><a href="MediaPlayerEvents.html#event:CAPTION_CONTAINER_RESIZE">MediaPlayerEvents#event:CAPTION_CONTAINER_RESIZE</a></li><li><a href="MediaPlayerEvents.html#event:CAPTION_RENDERED">MediaPlayerEvents#event:CAPTION_RENDERED</a></li><li><a href="MediaPlayerEvents.html#event:ERROR">MediaPlayerEvents#event:ERROR</a></li><li><a href="MediaPlayerEvents.html#event:FRAGMENT_LOADING_ABANDONED">MediaPlayerEvents#event:FRAGMENT_LOADING_ABANDONED</a></li><li><a href="MediaPlayerEvents.html#event:FRAGMENT_LOADING_COMPLETED">MediaPlayerEvents#event:FRAGMENT_LOADING_COMPLETED</a></li><li><a href="MediaPlayerEvents.html#event:FRAGMENT_LOADING_PROGRESS">MediaPlayerEvents#event:FRAGMENT_LOADING_PROGRESS</a></li><li><a href="MediaPlayerEvents.html#event:FRAGMENT_LOADING_STARTED">MediaPlayerEvents#event:FRAGMENT_LOADING_STARTED</a></li><li><a href="MediaPlayerEvents.html#event:GAP_CAUSED_SEEK_TO_PERIOD_END">MediaPlayerEvents#event:GAP_CAUSED_SEEK_TO_PERIOD_END</a></li><li><a href="MediaPlayerEvents.html#event:LOG">MediaPlayerEvents#event:LOG</a></li><li><a href="MediaPlayerEvents.html#event:MANIFEST_LOADED">MediaPlayerEvents#event:MANIFEST_LOADED</a></li><li><a href="MediaPlayerEvents.html#event:MANIFEST_VALIDITY_CHANGED">MediaPlayerEvents#event:MANIFEST_VALIDITY_CHANGED</a></li><li><a href="MediaPlayerEvents.html#event:METRIC_ADDED">MediaPlayerEvents#event:METRIC_ADDED</a></li><li><a href="MediaPlayerEvents.html#event:METRIC_CHANGED">MediaPlayerEvents#event:METRIC_CHANGED</a></li><li><a href="MediaPlayerEvents.html#event:METRIC_UPDATED">MediaPlayerEvents#event:METRIC_UPDATED</a></li><li><a href="MediaPlayerEvents.html#event:METRICS_CHANGED">MediaPlayerEvents#event:METRICS_CHANGED</a></li><li><a href="MediaPlayerEvents.html#event:PERIOD_SWITCH_COMPLETED">MediaPlayerEvents#event:PERIOD_SWITCH_COMPLETED</a></li><li><a href="MediaPlayerEvents.html#event:PERIOD_SWITCH_STARTED">MediaPlayerEvents#event:PERIOD_SWITCH_STARTED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_ENDED">MediaPlayerEvents#event:PLAYBACK_ENDED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_ERROR">MediaPlayerEvents#event:PLAYBACK_ERROR</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_METADATA_LOADED">MediaPlayerEvents#event:PLAYBACK_METADATA_LOADED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_NOT_ALLOWED">MediaPlayerEvents#event:PLAYBACK_NOT_ALLOWED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_PAUSED">MediaPlayerEvents#event:PLAYBACK_PAUSED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_PLAYING">MediaPlayerEvents#event:PLAYBACK_PLAYING</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_PROGRESS">MediaPlayerEvents#event:PLAYBACK_PROGRESS</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_RATE_CHANGED">MediaPlayerEvents#event:PLAYBACK_RATE_CHANGED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_SEEK_ASKED">MediaPlayerEvents#event:PLAYBACK_SEEK_ASKED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_SEEKED">MediaPlayerEvents#event:PLAYBACK_SEEKED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_SEEKING">MediaPlayerEvents#event:PLAYBACK_SEEKING</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_STALLED">MediaPlayerEvents#event:PLAYBACK_STALLED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_STARTED">MediaPlayerEvents#event:PLAYBACK_STARTED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_TIME_UPDATED">MediaPlayerEvents#event:PLAYBACK_TIME_UPDATED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_WAITING">MediaPlayerEvents#event:PLAYBACK_WAITING</a></li><li><a href="MediaPlayerEvents.html#event:QUALITY_CHANGE_RENDERED">MediaPlayerEvents#event:QUALITY_CHANGE_RENDERED</a></li><li><a href="MediaPlayerEvents.html#event:QUALITY_CHANGE_REQUESTED">MediaPlayerEvents#event:QUALITY_CHANGE_REQUESTED</a></li><li><a href="MediaPlayerEvents.html#event:SOURCE_INITIALIZED">MediaPlayerEvents#event:SOURCE_INITIALIZED</a></li><li><a href="MediaPlayerEvents.html#event:STREAM_INITIALIZED">MediaPlayerEvents#event:STREAM_INITIALIZED</a></li><li><a href="MediaPlayerEvents.html#event:STREAM_INITIALIZING">MediaPlayerEvents#event:STREAM_INITIALIZING</a></li><li><a href="MediaPlayerEvents.html#event:STREAM_TEARDOWN_COMPLETE">MediaPlayerEvents#event:STREAM_TEARDOWN_COMPLETE</a></li><li><a href="MediaPlayerEvents.html#event:STREAM_UPDATED">MediaPlayerEvents#event:STREAM_UPDATED</a></li><li><a href="MediaPlayerEvents.html#event:TEXT_TRACK_ADDED">MediaPlayerEvents#event:TEXT_TRACK_ADDED</a></li><li><a href="MediaPlayerEvents.html#event:TEXT_TRACKS_ADDED">MediaPlayerEvents#event:TEXT_TRACKS_ADDED</a></li><li><a href="MediaPlayerEvents.html#event:TRACK_CHANGE_RENDERED">MediaPlayerEvents#event:TRACK_CHANGE_RENDERED</a></li><li><a href="MediaPlayerEvents.html#event:TTML_PARSED">MediaPlayerEvents#event:TTML_PARSED</a></li><li><a href="MediaPlayerEvents.html#event:TTML_TO_PARSE">MediaPlayerEvents#event:TTML_TO_PARSE</a></li><li><a href="OfflineEvents.html#event:OFFLINE_RECORD_FINISHED">OfflineEvents#event:OFFLINE_RECORD_FINISHED</a></li><li><a href="OfflineEvents.html#event:OFFLINE_RECORD_LOADEDMETADATA">OfflineEvents#event:OFFLINE_RECORD_LOADEDMETADATA</a></li><li><a href="OfflineEvents.html#event:OFFLINE_RECORD_STARTED">OfflineEvents#event:OFFLINE_RECORD_STARTED</a></li><li><a href="OfflineEvents.html#event:OFFLINE_RECORD_STOPPED">OfflineEvents#event:OFFLINE_RECORD_STOPPED</a></li><li><a href="ProtectionEvents.html#event:KEY_ADDED">ProtectionEvents#event:KEY_ADDED</a></li><li><a href="ProtectionEvents.html#event:KEY_ERROR">ProtectionEvents#event:KEY_ERROR</a></li><li><a href="ProtectionEvents.html#event:KEY_MESSAGE">ProtectionEvents#event:KEY_MESSAGE</a></li><li><a href="ProtectionEvents.html#event:KEY_SESSION_CLOSED">ProtectionEvents#event:KEY_SESSION_CLOSED</a></li><li><a href="ProtectionEvents.html#event:KEY_SESSION_CREATED">ProtectionEvents#event:KEY_SESSION_CREATED</a></li><li><a href="ProtectionEvents.html#event:KEY_SESSION_REMOVED">ProtectionEvents#event:KEY_SESSION_REMOVED</a></li><li><a href="ProtectionEvents.html#event:KEY_STATUSES_CHANGED">ProtectionEvents#event:KEY_STATUSES_CHANGED</a></li><li><a href="ProtectionEvents.html#event:KEY_SYSTEM_SELECTED">ProtectionEvents#event:KEY_SYSTEM_SELECTED</a></li><li><a href="ProtectionEvents.html#event:LICENSE_REQUEST_COMPLETE">ProtectionEvents#event:LICENSE_REQUEST_COMPLETE</a></li><li><a href="ProtectionEvents.html#event:PROTECTION_CREATED">ProtectionEvents#event:PROTECTION_CREATED</a></li><li><a href="ProtectionEvents.html#event:PROTECTION_DESTROYED">ProtectionEvents#event:PROTECTION_DESTROYED</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#Entities">Entities</a></li><li><a href="global.html#localforage">localforage</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: streaming/text/TextSourceBuffer.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">/**
+ * The copyright in this software is being made available under the BSD License,
+ * included below. This software may be subject to other third party and contributor
+ * rights, including patent rights, and no such rights are granted under this license.
+ *
+ * Copyright (c) 2013, Dash Industry Forum.
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
+ *  * Redistributions of source code must retain the above copyright notice, this
+ *  list of conditions and the following disclaimer.
+ *  * Redistributions in binary form must reproduce the above copyright notice,
+ *  this list of conditions and the following disclaimer in the documentation and/or
+ *  other materials provided with the distribution.
+ *  * Neither the name of Dash Industry Forum nor the names of its
+ *  contributors may be used to endorse or promote products derived from this software
+ *  without specific prior written permission.
+ *
+ *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY
+ *  EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ *  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ *  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+ *  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ *  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ *  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ *  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ *  POSSIBILITY OF SUCH DAMAGE.
+ */
+import Constants from '../constants/Constants';
+import { HTTPRequest } from '../vo/metrics/HTTPRequest';
+import TextTrackInfo from '../vo/TextTrackInfo';
+import BoxParser from '../utils/BoxParser';
+import CustomTimeRanges from '../utils/CustomTimeRanges';
+import FactoryMaker from '../../core/FactoryMaker';
+import Debug from '../../core/Debug';
+import TextTracks from './TextTracks';
+import EmbeddedTextHtmlRender from './EmbeddedTextHtmlRender';
+import ISOBoxer from 'codem-isoboxer';
+import cea608parser from '../../../externals/cea608-parser';
+import EventBus from '../../core/EventBus';
+import Events from '../../core/events/Events';
+import DashJSError from '../vo/DashJSError';
+import Errors from '../../core/errors/Errors';
+
+function TextSourceBuffer() {
+
+    const context = this.context;
+    const eventBus = EventBus(context).getInstance();
+    let embeddedInitialized = false;
+
+    let instance,
+        logger,
+        boxParser,
+        errHandler,
+        adapter,
+        manifestModel,
+        mediaController,
+        parser,
+        vttParser,
+        ttmlParser,
+        mediaInfos,
+        textTracks,
+        fragmentedFragmentModel,
+        initializationSegmentReceived,
+        timescale,
+        fragmentedTracks,
+        videoModel,
+        streamController,
+        firstFragmentedSubtitleStart,
+        currFragmentedTrackIdx,
+        embeddedTracks,
+        embeddedTimescale,
+        embeddedLastSequenceNumber,
+        embeddedCea608FieldParsers,
+        embeddedTextHtmlRender,
+        mseTimeOffset;
+
+    function setup() {
+        logger = Debug(context).getInstance().getLogger(instance);
+
+        resetInitialSettings();
+    }
+
+    function resetFragmented () {
+        fragmentedFragmentModel = null;
+        timescale = NaN;
+        fragmentedTracks = [];
+        firstFragmentedSubtitleStart = null;
+        initializationSegmentReceived = false;
+    }
+
+    function resetInitialSettings() {
+        resetFragmented();
+
+        mediaInfos = [];
+        parser = null;
+    }
+
+    function initialize(mimeType, streamInfo, mediaInfoArr, fragmentModel) {
+        if (!embeddedInitialized) {
+            initEmbedded();
+        }
+
+        textTracks.setConfig({
+            videoModel: videoModel
+        });
+        textTracks.initialize();
+
+        if (!boxParser) {
+            boxParser = BoxParser(context).getInstance();
+        }
+
+        addMediaInfos(mimeType, streamInfo, mediaInfoArr, fragmentModel);
+    }
+
+    function addMediaInfos(mimeType, streamInfo, mediaInfoArr, fragmentModel) {
+        const isFragmented = !adapter.getIsTextTrack(mimeType);
+
+        mediaInfos = mediaInfos.concat(mediaInfoArr);
+
+        if (isFragmented) {
+            fragmentedFragmentModel = fragmentModel;
+            instance.buffered = CustomTimeRanges(context).create();
+            fragmentedTracks = mediaController.getTracksFor(Constants.FRAGMENTED_TEXT, streamInfo);
+            const currFragTrack = mediaController.getCurrentTrackFor(Constants.FRAGMENTED_TEXT, streamInfo);
+            for (let i = 0; i &lt; fragmentedTracks.length; i++) {
+                if (fragmentedTracks[i] === currFragTrack) {
+                    setCurrentFragmentedTrackIdx(i);
+                    break;
+                }
+            }
+        }
+
+        for (let i = 0; i &lt; mediaInfos.length; i++) {
+            createTextTrackFromMediaInfo(null, mediaInfos[i]);
+        }
+    }
+
+    function abort() {
+        textTracks.deleteAllTextTracks();
+        resetFragmented();
+        boxParser = null;
+        mediaInfos = [];
+    }
+
+    function reset() {
+        resetInitialSettings();
+
+        streamController = null;
+        videoModel = null;
+        textTracks = null;
+    }
+
+    function onVideoChunkReceived(e) {
+        const chunk = e.chunk;
+
+        if (chunk.mediaInfo.embeddedCaptions) {
+            append(chunk.bytes, chunk);
+        }
+    }
+
+    function initEmbedded() {
+        embeddedTracks = [];
+        textTracks = TextTracks(context).getInstance();
+        textTracks.setConfig({
+            videoModel: videoModel
+        });
+        textTracks.initialize();
+        boxParser = BoxParser(context).getInstance();
+        currFragmentedTrackIdx = null;
+        embeddedTimescale = 0;
+        embeddedCea608FieldParsers = [];
+        embeddedLastSequenceNumber = null;
+        embeddedInitialized = true;
+        embeddedTextHtmlRender = EmbeddedTextHtmlRender(context).getInstance();
+
+        const streamProcessors = streamController.getActiveStreamProcessors();
+        for (const i in streamProcessors) {
+            if (streamProcessors[i].getType() === 'video') {
+                mseTimeOffset = streamProcessors[i].getRepresentationInfo().MSETimeOffset;
+                break;
+            }
+        }
+
+        eventBus.on(Events.VIDEO_CHUNK_RECEIVED, onVideoChunkReceived, this);
+        eventBus.on(Events.BUFFER_CLEARED, onVideoBufferCleared, this);
+    }
+
+    function resetEmbedded() {
+        eventBus.off(Events.VIDEO_CHUNK_RECEIVED, onVideoChunkReceived, this);
+        eventBus.off(Events.BUFFER_CLEARED, onVideoBufferCleared, this);
+        if (textTracks) {
+            textTracks.deleteAllTextTracks();
+        }
+        embeddedInitialized = false;
+        embeddedTracks = [];
+        embeddedCea608FieldParsers = [null, null];
+        embeddedLastSequenceNumber = null;
+    }
+
+    function addEmbeddedTrack(mediaInfo) {
+        if (!embeddedInitialized) {
+            initEmbedded();
+        }
+        if (mediaInfo) {
+            if (mediaInfo.id === Constants.CC1 || mediaInfo.id === Constants.CC3) {
+                for (let i = 0; i &lt; embeddedTracks.length; i++) {
+                    if (embeddedTracks[i].id === mediaInfo.id) {
+                        return;
+                    }
+                }
+                embeddedTracks.push(mediaInfo);
+            } else {
+                logger.warn('Embedded track ' + mediaInfo.id + ' not supported!');
+            }
+        }
+    }
+
+    function setConfig(config) {
+        if (!config) {
+            return;
+        }
+        if (config.errHandler) {
+            errHandler = config.errHandler;
+        }
+        if (config.adapter) {
+            adapter = config.adapter;
+        }
+        if (config.manifestModel) {
+            manifestModel = config.manifestModel;
+        }
+        if (config.mediaController) {
+            mediaController = config.mediaController;
+        }
+        if (config.videoModel) {
+            videoModel = config.videoModel;
+        }
+        if (config.streamController) {
+            streamController = config.streamController;
+        }
+        if (config.textTracks) {
+            textTracks = config.textTracks;
+        }
+        if (config.vttParser) {
+            vttParser = config.vttParser;
+        }
+        if (config.ttmlParser) {
+            ttmlParser = config.ttmlParser;
+        }
+    }
+
+    function getConfig() {
+        const config = {
+            fragmentModel: fragmentedFragmentModel,
+            fragmentedTracks: fragmentedTracks,
+            videoModel: videoModel
+        };
+
+        return config;
+    }
+
+    function setCurrentFragmentedTrackIdx(idx) {
+        currFragmentedTrackIdx = idx;
+    }
+
+    function createTextTrackFromMediaInfo(captionData, mediaInfo) {
+        const textTrackInfo = new TextTrackInfo();
+        const trackKindMap = { subtitle: 'subtitles', caption: 'captions' }; //Dash Spec has no "s" on end of KIND but HTML needs plural.
+        const getKind = function () {
+            let kind = (mediaInfo.roles.length > 0) ? trackKindMap[mediaInfo.roles[0]] : trackKindMap.caption;
+            kind = (kind === trackKindMap.caption || kind === trackKindMap.subtitle) ? kind : trackKindMap.caption;
+            return kind;
+        };
+
+        const checkTTML = function () {
+            let ttml = false;
+            if (mediaInfo.codec &amp;&amp; mediaInfo.codec.search(Constants.STPP) >= 0) {
+                ttml = true;
+            }
+            if (mediaInfo.mimeType &amp;&amp; mediaInfo.mimeType.search(Constants.TTML) >= 0) {
+                ttml = true;
+            }
+            return ttml;
+        };
+
+        textTrackInfo.captionData = captionData;
+        textTrackInfo.lang = mediaInfo.lang;
+        textTrackInfo.labels = mediaInfo.labels;
+        textTrackInfo.id = mediaInfo.id ? mediaInfo.id : mediaInfo.index; // AdaptationSet id (an unsigned int) as it's optional parameter, use mediaInfo.index
+        textTrackInfo.index = mediaInfo.index; // AdaptationSet index in manifest
+        textTrackInfo.isTTML = checkTTML();
+        textTrackInfo.defaultTrack = getIsDefault(mediaInfo);
+        textTrackInfo.isFragmented = !adapter.getIsTextTrack(mediaInfo.mimeType);
+        textTrackInfo.isEmbedded = mediaInfo.isEmbedded ? true : false;
+        textTrackInfo.kind = getKind();
+        textTrackInfo.roles = mediaInfo.roles;
+        textTrackInfo.accessibility = mediaInfo.accessibility;
+        const totalNrTracks = (mediaInfos ? mediaInfos.length : 0) + embeddedTracks.length;
+        textTracks.addTextTrack(textTrackInfo, totalNrTracks);
+    }
+
+    function append(bytes, chunk) {
+        let result,
+            sampleList,
+            i, j, k,
+            samplesInfo,
+            ccContent;
+        const mediaInfo = chunk.mediaInfo;
+        const mediaType = mediaInfo.type;
+        const mimeType = mediaInfo.mimeType;
+        const codecType = mediaInfo.codec || mimeType;
+        if (!codecType) {
+            logger.error('No text type defined');
+            return;
+        }
+
+        if (mediaType === Constants.FRAGMENTED_TEXT) {
+            if (!initializationSegmentReceived &amp;&amp; chunk.segmentType === 'InitializationSegment') {
+                initializationSegmentReceived = true;
+                timescale = boxParser.getMediaTimescaleFromMoov(bytes);
+            } else {
+                if (!initializationSegmentReceived) {
+                    return;
+                }
+                samplesInfo = boxParser.getSamplesInfo(bytes);
+                sampleList = samplesInfo.sampleList;
+                if (firstFragmentedSubtitleStart === null &amp;&amp; sampleList.length > 0) {
+                    firstFragmentedSubtitleStart = sampleList[0].cts - chunk.start * timescale;
+                }
+                if (codecType.search(Constants.STPP) >= 0) {
+                    parser = parser !== null ? parser : getParser(codecType);
+                    for (i = 0; i &lt; sampleList.length; i++) {
+                        const sample = sampleList[i];
+                        const sampleStart = sample.cts;
+                        const sampleRelStart = sampleStart - firstFragmentedSubtitleStart;
+                        this.buffered.add(sampleRelStart / timescale, (sampleRelStart + sample.duration) / timescale);
+                        const dataView = new DataView(bytes, sample.offset, sample.subSizes[0]);
+                        ccContent = ISOBoxer.Utils.dataViewToString(dataView, Constants.UTF8);
+                        const images = [];
+                        let subOffset = sample.offset + sample.subSizes[0];
+                        for (j = 1; j &lt; sample.subSizes.length; j++) {
+                            const inData = new Uint8Array(bytes, subOffset, sample.subSizes[j]);
+                            const raw = String.fromCharCode.apply(null, inData);
+                            images.push(raw);
+                            subOffset += sample.subSizes[j];
+                        }
+                        try {
+                            // Only used for Miscrosoft Smooth Streaming support - caption time is relative to sample time. In this case, we apply an offset.
+                            const manifest = manifestModel.getValue();
+                            const offsetTime = manifest.ttmlTimeIsRelative ? sampleStart / timescale : 0;
+                            result = parser.parse(ccContent, offsetTime, sampleStart / timescale, (sampleStart + sample.duration) / timescale, images);
+                            textTracks.addCaptions(currFragmentedTrackIdx, firstFragmentedSubtitleStart / timescale, result);
+                        } catch (e) {
+                            fragmentedFragmentModel.removeExecutedRequestsBeforeTime();
+                            this.remove();
+                            logger.error('TTML parser error: ' + e.message);
+                        }
+                    }
+                } else {
+                    // WebVTT case
+                    const captionArray = [];
+                    for (i = 0 ; i &lt; sampleList.length; i++) {
+                        const sample = sampleList[i];
+                        sample.cts -= firstFragmentedSubtitleStart;
+                        this.buffered.add(sample.cts / timescale, (sample.cts + sample.duration) / timescale);
+                        const sampleData = bytes.slice(sample.offset, sample.offset + sample.size);
+                        // There are boxes inside the sampleData, so we need a ISOBoxer to get at it.
+                        const sampleBoxes = ISOBoxer.parseBuffer(sampleData);
+
+                        for (j = 0 ; j &lt; sampleBoxes.boxes.length; j++) {
+                            const box1 = sampleBoxes.boxes[j];
+                            logger.debug('VTT box1: ' + box1.type);
+                            if (box1.type === 'vtte') {
+                                continue; //Empty box
+                            }
+                            if (box1.type === 'vttc') {
+                                logger.debug('VTT vttc boxes.length = ' + box1.boxes.length);
+                                for (k = 0 ; k &lt; box1.boxes.length; k++) {
+                                    const box2 = box1.boxes[k];
+                                    logger.debug('VTT box2: ' + box2.type);
+                                    if (box2.type === 'payl') {
+                                        const cue_text = box2.cue_text;
+                                        logger.debug('VTT cue_text = ' + cue_text);
+                                        const start_time = sample.cts / timescale;
+                                        const end_time = (sample.cts + sample.duration) / timescale;
+                                        captionArray.push({
+                                            start: start_time,
+                                            end: end_time,
+                                            data: cue_text,
+                                            styles: {}
+                                        });
+                                        logger.debug('VTT ' + start_time + '-' + end_time + ' : ' + cue_text);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (captionArray.length > 0) {
+                        textTracks.addCaptions(currFragmentedTrackIdx, 0, captionArray);
+                    }
+                }
+            }
+        } else if (mediaType === Constants.TEXT) {
+            const dataView = new DataView(bytes, 0, bytes.byteLength);
+            ccContent = ISOBoxer.Utils.dataViewToString(dataView, Constants.UTF8);
+
+            try {
+                result = getParser(codecType).parse(ccContent, 0);
+                textTracks.addCaptions(textTracks.getCurrentTrackIdx(), 0, result);
+            } catch (e) {
+                errHandler.error(new DashJSError(Errors.TIMED_TEXT_ERROR_ID_PARSE_CODE, Errors.TIMED_TEXT_ERROR_MESSAGE_PARSE + e.message, ccContent));
+            }
+        } else if (mediaType === Constants.VIDEO) { //embedded text
+            if (chunk.segmentType === HTTPRequest.INIT_SEGMENT_TYPE) {
+                if (embeddedTimescale === 0) {
+                    embeddedTimescale = boxParser.getMediaTimescaleFromMoov(bytes);
+                    for (i = 0; i &lt; embeddedTracks.length; i++) {
+                        createTextTrackFromMediaInfo(null, embeddedTracks[i]);
+                    }
+                }
+            } else { // MediaSegment
+                if (embeddedTimescale === 0) {
+                    logger.warn('CEA-608: No timescale for embeddedTextTrack yet');
+                    return;
+                }
+                const makeCueAdderForIndex = function (self, trackIndex) {
+                    function newCue(startTime, endTime, captionScreen) {
+                        let captionsArray = null;
+                        if (videoModel.getTTMLRenderingDiv()) {
+                            captionsArray = embeddedTextHtmlRender.createHTMLCaptionsFromScreen(videoModel.getElement(), startTime, endTime, captionScreen);
+                        } else {
+                            const text = captionScreen.getDisplayText();
+                            captionsArray = [{
+                                start: startTime,
+                                end: endTime,
+                                data: text,
+                                styles: {}
+                            }];
+                        }
+                        if (captionsArray) {
+                            textTracks.addCaptions(trackIndex, 0, captionsArray);
+                        }
+                    }
+                    return newCue;
+                };
+
+                samplesInfo = boxParser.getSamplesInfo(bytes);
+
+                const sequenceNumber = samplesInfo.lastSequenceNumber;
+
+                if (!embeddedCea608FieldParsers[0] &amp;&amp; !embeddedCea608FieldParsers[1]) {
+                    // Time to setup the CEA-608 parsing
+                    let field, handler, trackIdx;
+                    for (i = 0; i &lt; embeddedTracks.length; i++) {
+                        if (embeddedTracks[i].id === Constants.CC1) {
+                            field = 0;
+                            trackIdx = textTracks.getTrackIdxForId(Constants.CC1);
+                        } else if (embeddedTracks[i].id === Constants.CC3) {
+                            field = 1;
+                            trackIdx = textTracks.getTrackIdxForId(Constants.CC3);
+                        }
+                        if (trackIdx === -1) {
+                            logger.warn('CEA-608: data before track is ready.');
+                            return;
+                        }
+                        handler = makeCueAdderForIndex(this, trackIdx);
+                        embeddedCea608FieldParsers[i] = new cea608parser.Cea608Parser(i + 1, {
+                            'newCue': handler
+                        }, null);
+                    }
+                }
+
+                if (embeddedTimescale) {
+                    if (embeddedLastSequenceNumber !== null &amp;&amp; sequenceNumber !== embeddedLastSequenceNumber + samplesInfo.numSequences) {
+                        for (i = 0; i &lt; embeddedCea608FieldParsers.length; i++) {
+                            if (embeddedCea608FieldParsers[i]) {
+                                embeddedCea608FieldParsers[i].reset();
+                            }
+                        }
+                    }
+
+                    const allCcData = extractCea608Data(bytes, samplesInfo.sampleList);
+
+                    for (let fieldNr = 0; fieldNr &lt; embeddedCea608FieldParsers.length; fieldNr++) {
+                        const ccData = allCcData.fields[fieldNr];
+                        const fieldParser = embeddedCea608FieldParsers[fieldNr];
+                        if (fieldParser) {
+                            for (i = 0; i &lt; ccData.length; i++) {
+                                fieldParser.addData(ccData[i][0] / embeddedTimescale, ccData[i][1]);
+                            }
+                        }
+                    }
+                    embeddedLastSequenceNumber = sequenceNumber;
+                }
+            }
+        }
+    }
+    /**
+     * Extract CEA-608 data from a buffer of data.
+     * @param {ArrayBuffer} data
+     * @param {Array} samples cue information
+     * @returns {Object|null} ccData corresponding to one segment.
+     */
+    function extractCea608Data(data, samples) {
+        if (samples.length === 0) {
+            return null;
+        }
+
+        const allCcData = {
+            splits: [],
+            fields: [[], []]
+        };
+        const raw = new DataView(data);
+        for (let i = 0; i &lt; samples.length; i++) {
+            const sample = samples[i];
+            const cea608Ranges = cea608parser.findCea608Nalus(raw, sample.offset, sample.size);
+            let lastSampleTime = null;
+            let idx = 0;
+            for (let j = 0; j &lt; cea608Ranges.length; j++) {
+                const ccData = cea608parser.extractCea608DataFromRange(raw, cea608Ranges[j]);
+                for (let k = 0; k &lt; 2; k++) {
+                    if (ccData[k].length > 0) {
+                        if (sample.cts !== lastSampleTime) {
+                            idx = 0;
+                        } else {
+                            idx += 1;
+                        }
+                        allCcData.fields[k].push([sample.cts + (mseTimeOffset * embeddedTimescale), ccData[k], idx]);
+                        lastSampleTime = sample.cts;
+                    }
+                }
+            }
+        }
+
+        // Sort by sampleTime ascending order
+        // If two packets have the same sampleTime, use them in the order
+        // they were received
+        allCcData.fields.forEach(function sortField(field) {
+            field.sort(function (a, b) {
+                if (a[0] === b[0]) {
+                    return a[2] - b[2];
+                }
+                return a[0] - b[0];
+            });
+        });
+
+        return allCcData;
+    }
+
+    function getIsDefault(mediaInfo) {
+        //TODO How to tag default. currently same order as listed in manifest.
+        // Is there a way to mark a text adaptation set as the default one? DASHIF meeting talk about using role which is being used for track KIND
+        // Eg subtitles etc. You can have multiple role tags per adaptation Not defined in the spec yet.
+        let isDefault = false;
+        if (embeddedTracks.length > 1 &amp;&amp; mediaInfo.isEmbedded) {
+            isDefault = (mediaInfo.id &amp;&amp; mediaInfo.id === Constants.CC1); // CC1 if both CC1 and CC3 exist
+        } else if (embeddedTracks.length === 1) {
+            if (mediaInfo.id &amp;&amp; typeof mediaInfo.id === 'string' &amp;&amp; mediaInfo.id.substring(0, 2) === 'CC') { // Either CC1 or CC3
+                isDefault = true;
+            }
+        } else if (embeddedTracks.length === 0) {
+            isDefault = (mediaInfo.index === mediaInfos[0].index);
+        }
+        return isDefault;
+    }
+
+    function getParser(codecType) {
+        let parser;
+        if (codecType.search(Constants.VTT) >= 0) {
+            parser = vttParser;
+        } else if (codecType.search(Constants.TTML) >= 0 || codecType.search(Constants.STPP) >= 0) {
+            parser = ttmlParser;
+        }
+        return parser;
+    }
+
+    function remove(start, end) {
+        //if start and end are not defined, remove all
+        if ((start === undefined) &amp;&amp; (start === end)) {
+            start = this.buffered.start(0);
+            end = this.buffered.end(this.buffered.length - 1);
+        }
+        this.buffered.remove(start, end);
+    }
+
+    function onVideoBufferCleared(e) {
+        embeddedTracks.forEach(function (track) {
+            const trackIdx = textTracks.getTrackIdxForId(track.id);
+            if (trackIdx >= 0) {
+                textTracks.deleteCuesFromTrackIdx(trackIdx, e.from, e.to);
+            }
+        });
+    }
+
+    instance = {
+        initialize: initialize,
+        append: append,
+        abort: abort,
+        addEmbeddedTrack: addEmbeddedTrack,
+        resetEmbedded: resetEmbedded,
+        setConfig: setConfig,
+        getConfig: getConfig,
+        setCurrentFragmentedTrackIdx: setCurrentFragmentedTrackIdx,
+        remove: remove,
+        reset: reset
+    };
+
+    setup();
+
+    return instance;
+}
+
+TextSourceBuffer.__dashjs_factory_name = 'TextSourceBuffer';
+export default FactoryMaker.getSingletonFactory(TextSourceBuffer);
+</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	<h3>Dash.js <a href="http://gruntjs.com/"><img src="https://gruntjs.com/cdn/builtwith.png" alt="Built with Grunt"></a></h3>
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a>
+	
+		on Sat Nov 14th 2020
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

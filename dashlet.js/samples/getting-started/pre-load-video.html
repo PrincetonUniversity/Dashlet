@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Preload Video example</title>
+
+    <script src="../../dist/dash.all.debug.js"></script>
+    <!--dash.all.min.js should be used in production over dash.all.debug.js
+        Debug files are not compressed or obfuscated making the file size much larger compared with dash.all.min.js-->
+    <!--<script src="../../dist/dash.all.min.js"></script>-->
+
+    <script class="code">
+        var video,
+            players,
+            idx,
+            superplayer
+        
+        function control_bar() {
+            var progress = document.getElementById('progress');
+		    var progressBar = document.getElementById('progress-bar');
+            var supportsProgress = (document.createElement('progress').max !== undefined);
+		    if (!supportsProgress) progress.setAttribute('data-state', 'fake');
+        }
+
+        function init() {
+            // var urls = ["https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd", "https://bitmovin-a.akamaihd.net/content/playhouse-vr/mpds/105560.mpd", "https://dash.akamaized.net/dash264/TestCasesIOP41/MultiTrack/alternative_content/1/manifest_alternative_content_live.mpd"];
+
+
+            var urls = ["http://172.29.114.202:8080/dash/data/6836783718552636678/manifest.mpd", "http://172.29.114.202:8080/dash/data/6842960439760932101/manifest.mpd", "http://172.29.114.202:8080/dash/data/6836860558994590981/manifest.mpd", "http://172.29.114.202:8080/dash/data/6837206354168417541/manifest.mpd", "http://172.29.114.202:8080/dash/data/6837216137567079685/manifest.mpd"];
+            // players = [];
+            // idx = 0
+
+            // for (i = 0; i < 3; i++) {
+            //     players.push(dashjs.MediaPlayer().create());
+            //     players[i].initialize(null, urls[i], true);
+            //     players[i].preload();
+            // }
+
+            superplayer = dashjs.SuperPlayer().create();
+            var videoContainer = document.getElementById('videoContainer');
+            if (!video) {
+                video = document.createElement('video');
+                video.setAttribute("id", "video");
+                video.controls = true;
+                videoContainer.appendChild(video);
+            }
+
+            for (i = 0; i < 3; i++) {
+                superplayer.attachSource(urls[i]);
+            }
+            
+            superplayer.attachView(video);
+
+        }
+
+        // function attachVideoPlayer() {
+            // var videoContainer = document.getElementById('videoContainer');
+            // if (!video) {
+            //     video = document.createElement('video');
+            //     video.controls = true;
+            //     videoContainer.appendChild(video);
+            // }
+
+            // // player2.setView();
+            // players[idx].attachView(video);
+            // player.attachView(video);
+            
+        // }
+        
+        // function getNextSegment() {            
+            // player.attachView(video);
+        // }
+
+        function next() {            
+            // players[idx].reset();
+            // idx = idx + 1;
+            // players[idx].attachView(video);
+            // superplayer.add();
+            // alert(superplayer.query());
+            superplayer.playNext();
+        }
+    </script>
+
+</head>
+
+<body>
+    <div>
+        This sample shows how to use preload feature of dash.js. In this sample, streaming is initialized and dash.js starts downloading stream segments as soon as the page is loaded. Right when the user clicks "Attach View" the video element is created,
+        attached to the already initialized dash.js MediaPlayer and then playback starts.
+    </div>
+    <!-- <div>
+        <button onclick="attachVideoPlayer()">Attach View</button>
+    </div> -->
+
+
+    <!-- <div id="videoContainer">
+    </div> -->
+    
+
+    <div id="videoContainer">
+		<video id="video">
+		</video>
+		<!-- <div id="video-controls" class="controls" data-state="hidden">
+			<button id="playpause" type="button" data-state="play">Play/Pause</button>
+			<button id="stop" type="button" data-state="stop">Stop</button>
+			<div class="progress">
+				<progress id="progress" value="0" min="0">
+					<span id="progress-bar"></span>
+				</progress>
+			</div>
+		</div> -->
+	</div>
+
+    <div>
+        <button id="nextbutton" onclick="next()">Next</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            init();
+        });
+    </script>
+</body>
+
+</html>

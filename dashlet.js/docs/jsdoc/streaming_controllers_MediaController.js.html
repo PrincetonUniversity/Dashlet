@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Dash JS Source: streaming/controllers/MediaController.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.spacelab.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Dash JS</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-DashAdapter.html">DashAdapter</a></li><li><a href="module-DashMetrics.html">DashMetrics</a></li><li><a href="module-MediaPlayer.html">MediaPlayer</a></li><li><a href="module-OfflineController.html">OfflineController</a></li><li><a href="module-ProtectionController.html">ProtectionController</a></li><li><a href="module-Settings.html">Settings</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Errors.html">Errors</a></li><li><a href="MediaPlayerEvents.html">MediaPlayerEvents</a></li><li><a href="MssErrors.html">MssErrors</a></li><li><a href="OfflineErrors.html">OfflineErrors</a></li><li><a href="OfflineEvents.html">OfflineEvents</a></li><li><a href="ProtectionErrors.html">ProtectionErrors</a></li><li><a href="ProtectionEvents.html">ProtectionEvents</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="MediaPlayerEvents.html#event:AST_IN_FUTURE">MediaPlayerEvents#event:AST_IN_FUTURE</a></li><li><a href="MediaPlayerEvents.html#event:BUFFER_EMPTY">MediaPlayerEvents#event:BUFFER_EMPTY</a></li><li><a href="MediaPlayerEvents.html#event:BUFFER_LEVEL_STATE_CHANGED">MediaPlayerEvents#event:BUFFER_LEVEL_STATE_CHANGED</a></li><li><a href="MediaPlayerEvents.html#event:BUFFER_LOADED">MediaPlayerEvents#event:BUFFER_LOADED</a></li><li><a href="MediaPlayerEvents.html#event:CAN_PLAY">MediaPlayerEvents#event:CAN_PLAY</a></li><li><a href="MediaPlayerEvents.html#event:CAPTION_CONTAINER_RESIZE">MediaPlayerEvents#event:CAPTION_CONTAINER_RESIZE</a></li><li><a href="MediaPlayerEvents.html#event:CAPTION_RENDERED">MediaPlayerEvents#event:CAPTION_RENDERED</a></li><li><a href="MediaPlayerEvents.html#event:ERROR">MediaPlayerEvents#event:ERROR</a></li><li><a href="MediaPlayerEvents.html#event:FRAGMENT_LOADING_ABANDONED">MediaPlayerEvents#event:FRAGMENT_LOADING_ABANDONED</a></li><li><a href="MediaPlayerEvents.html#event:FRAGMENT_LOADING_COMPLETED">MediaPlayerEvents#event:FRAGMENT_LOADING_COMPLETED</a></li><li><a href="MediaPlayerEvents.html#event:FRAGMENT_LOADING_PROGRESS">MediaPlayerEvents#event:FRAGMENT_LOADING_PROGRESS</a></li><li><a href="MediaPlayerEvents.html#event:FRAGMENT_LOADING_STARTED">MediaPlayerEvents#event:FRAGMENT_LOADING_STARTED</a></li><li><a href="MediaPlayerEvents.html#event:GAP_CAUSED_SEEK_TO_PERIOD_END">MediaPlayerEvents#event:GAP_CAUSED_SEEK_TO_PERIOD_END</a></li><li><a href="MediaPlayerEvents.html#event:LOG">MediaPlayerEvents#event:LOG</a></li><li><a href="MediaPlayerEvents.html#event:MANIFEST_LOADED">MediaPlayerEvents#event:MANIFEST_LOADED</a></li><li><a href="MediaPlayerEvents.html#event:MANIFEST_VALIDITY_CHANGED">MediaPlayerEvents#event:MANIFEST_VALIDITY_CHANGED</a></li><li><a href="MediaPlayerEvents.html#event:METRIC_ADDED">MediaPlayerEvents#event:METRIC_ADDED</a></li><li><a href="MediaPlayerEvents.html#event:METRIC_CHANGED">MediaPlayerEvents#event:METRIC_CHANGED</a></li><li><a href="MediaPlayerEvents.html#event:METRIC_UPDATED">MediaPlayerEvents#event:METRIC_UPDATED</a></li><li><a href="MediaPlayerEvents.html#event:METRICS_CHANGED">MediaPlayerEvents#event:METRICS_CHANGED</a></li><li><a href="MediaPlayerEvents.html#event:PERIOD_SWITCH_COMPLETED">MediaPlayerEvents#event:PERIOD_SWITCH_COMPLETED</a></li><li><a href="MediaPlayerEvents.html#event:PERIOD_SWITCH_STARTED">MediaPlayerEvents#event:PERIOD_SWITCH_STARTED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_ENDED">MediaPlayerEvents#event:PLAYBACK_ENDED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_ERROR">MediaPlayerEvents#event:PLAYBACK_ERROR</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_METADATA_LOADED">MediaPlayerEvents#event:PLAYBACK_METADATA_LOADED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_NOT_ALLOWED">MediaPlayerEvents#event:PLAYBACK_NOT_ALLOWED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_PAUSED">MediaPlayerEvents#event:PLAYBACK_PAUSED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_PLAYING">MediaPlayerEvents#event:PLAYBACK_PLAYING</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_PROGRESS">MediaPlayerEvents#event:PLAYBACK_PROGRESS</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_RATE_CHANGED">MediaPlayerEvents#event:PLAYBACK_RATE_CHANGED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_SEEK_ASKED">MediaPlayerEvents#event:PLAYBACK_SEEK_ASKED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_SEEKED">MediaPlayerEvents#event:PLAYBACK_SEEKED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_SEEKING">MediaPlayerEvents#event:PLAYBACK_SEEKING</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_STALLED">MediaPlayerEvents#event:PLAYBACK_STALLED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_STARTED">MediaPlayerEvents#event:PLAYBACK_STARTED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_TIME_UPDATED">MediaPlayerEvents#event:PLAYBACK_TIME_UPDATED</a></li><li><a href="MediaPlayerEvents.html#event:PLAYBACK_WAITING">MediaPlayerEvents#event:PLAYBACK_WAITING</a></li><li><a href="MediaPlayerEvents.html#event:QUALITY_CHANGE_RENDERED">MediaPlayerEvents#event:QUALITY_CHANGE_RENDERED</a></li><li><a href="MediaPlayerEvents.html#event:QUALITY_CHANGE_REQUESTED">MediaPlayerEvents#event:QUALITY_CHANGE_REQUESTED</a></li><li><a href="MediaPlayerEvents.html#event:SOURCE_INITIALIZED">MediaPlayerEvents#event:SOURCE_INITIALIZED</a></li><li><a href="MediaPlayerEvents.html#event:STREAM_INITIALIZED">MediaPlayerEvents#event:STREAM_INITIALIZED</a></li><li><a href="MediaPlayerEvents.html#event:STREAM_INITIALIZING">MediaPlayerEvents#event:STREAM_INITIALIZING</a></li><li><a href="MediaPlayerEvents.html#event:STREAM_TEARDOWN_COMPLETE">MediaPlayerEvents#event:STREAM_TEARDOWN_COMPLETE</a></li><li><a href="MediaPlayerEvents.html#event:STREAM_UPDATED">MediaPlayerEvents#event:STREAM_UPDATED</a></li><li><a href="MediaPlayerEvents.html#event:TEXT_TRACK_ADDED">MediaPlayerEvents#event:TEXT_TRACK_ADDED</a></li><li><a href="MediaPlayerEvents.html#event:TEXT_TRACKS_ADDED">MediaPlayerEvents#event:TEXT_TRACKS_ADDED</a></li><li><a href="MediaPlayerEvents.html#event:TRACK_CHANGE_RENDERED">MediaPlayerEvents#event:TRACK_CHANGE_RENDERED</a></li><li><a href="MediaPlayerEvents.html#event:TTML_PARSED">MediaPlayerEvents#event:TTML_PARSED</a></li><li><a href="MediaPlayerEvents.html#event:TTML_TO_PARSE">MediaPlayerEvents#event:TTML_TO_PARSE</a></li><li><a href="OfflineEvents.html#event:OFFLINE_RECORD_FINISHED">OfflineEvents#event:OFFLINE_RECORD_FINISHED</a></li><li><a href="OfflineEvents.html#event:OFFLINE_RECORD_LOADEDMETADATA">OfflineEvents#event:OFFLINE_RECORD_LOADEDMETADATA</a></li><li><a href="OfflineEvents.html#event:OFFLINE_RECORD_STARTED">OfflineEvents#event:OFFLINE_RECORD_STARTED</a></li><li><a href="OfflineEvents.html#event:OFFLINE_RECORD_STOPPED">OfflineEvents#event:OFFLINE_RECORD_STOPPED</a></li><li><a href="ProtectionEvents.html#event:KEY_ADDED">ProtectionEvents#event:KEY_ADDED</a></li><li><a href="ProtectionEvents.html#event:KEY_ERROR">ProtectionEvents#event:KEY_ERROR</a></li><li><a href="ProtectionEvents.html#event:KEY_MESSAGE">ProtectionEvents#event:KEY_MESSAGE</a></li><li><a href="ProtectionEvents.html#event:KEY_SESSION_CLOSED">ProtectionEvents#event:KEY_SESSION_CLOSED</a></li><li><a href="ProtectionEvents.html#event:KEY_SESSION_CREATED">ProtectionEvents#event:KEY_SESSION_CREATED</a></li><li><a href="ProtectionEvents.html#event:KEY_SESSION_REMOVED">ProtectionEvents#event:KEY_SESSION_REMOVED</a></li><li><a href="ProtectionEvents.html#event:KEY_STATUSES_CHANGED">ProtectionEvents#event:KEY_STATUSES_CHANGED</a></li><li><a href="ProtectionEvents.html#event:KEY_SYSTEM_SELECTED">ProtectionEvents#event:KEY_SYSTEM_SELECTED</a></li><li><a href="ProtectionEvents.html#event:LICENSE_REQUEST_COMPLETE">ProtectionEvents#event:LICENSE_REQUEST_COMPLETE</a></li><li><a href="ProtectionEvents.html#event:PROTECTION_CREATED">ProtectionEvents#event:PROTECTION_CREATED</a></li><li><a href="ProtectionEvents.html#event:PROTECTION_DESTROYED">ProtectionEvents#event:PROTECTION_DESTROYED</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#Entities">Entities</a></li><li><a href="global.html#localforage">localforage</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: streaming/controllers/MediaController.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">/**
+ * The copyright in this software is being made available under the BSD License,
+ * included below. This software may be subject to other third party and contributor
+ * rights, including patent rights, and no such rights are granted under this license.
+ *
+ * Copyright (c) 2013, Dash Industry Forum.
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
+ *  * Redistributions of source code must retain the above copyright notice, this
+ *  list of conditions and the following disclaimer.
+ *  * Redistributions in binary form must reproduce the above copyright notice,
+ *  this list of conditions and the following disclaimer in the documentation and/or
+ *  other materials provided with the distribution.
+ *  * Neither the name of Dash Industry Forum nor the names of its
+ *  contributors may be used to endorse or promote products derived from this software
+ *  without specific prior written permission.
+ *
+ *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS IS AND ANY
+ *  EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ *  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ *  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+ *  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ *  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ *  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ *  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ *  POSSIBILITY OF SUCH DAMAGE.
+ */
+import Constants from '../constants/Constants';
+import Events from '../../core/events/Events';
+import EventBus from '../../core/EventBus';
+import FactoryMaker from '../../core/FactoryMaker';
+import Debug from '../../core/Debug';
+
+const TRACK_SWITCH_MODE_NEVER_REPLACE = 'neverReplace';
+const TRACK_SWITCH_MODE_ALWAYS_REPLACE = 'alwaysReplace';
+const TRACK_SELECTION_MODE_HIGHEST_BITRATE = 'highestBitrate';
+const TRACK_SELECTION_MODE_WIDEST_RANGE = 'widestRange';
+const DEFAULT_INIT_TRACK_SELECTION_MODE = TRACK_SELECTION_MODE_HIGHEST_BITRATE;
+
+function MediaController() {
+
+    const context = this.context;
+    const eventBus = EventBus(context).getInstance();
+
+    let instance,
+        logger,
+        tracks,
+        initialSettings,
+        selectionMode,
+        switchMode,
+        domStorage;
+
+    const validTrackSwitchModes = [
+        TRACK_SWITCH_MODE_ALWAYS_REPLACE,
+        TRACK_SWITCH_MODE_NEVER_REPLACE
+    ];
+
+    const validTrackSelectionModes = [
+        TRACK_SELECTION_MODE_HIGHEST_BITRATE,
+        TRACK_SELECTION_MODE_WIDEST_RANGE
+    ];
+
+    function setup() {
+        logger = Debug(context).getInstance().getLogger(instance);
+        reset();
+    }
+
+    /**
+     * @param {string} type
+     * @param {StreamInfo} streamInfo
+     * @memberof MediaController#
+     */
+    function checkInitialMediaSettingsForType(type, streamInfo) {
+        let settings = getInitialSettings(type);
+        const tracksForType = getTracksFor(type, streamInfo);
+        const tracks = [];
+
+        if (!settings) {
+            settings = domStorage.getSavedMediaSettings(type);
+            setInitialSettings(type, settings);
+        }
+
+        if (!tracksForType || (tracksForType.length === 0)) return;
+
+        if (settings) {
+            tracksForType.forEach(function (track) {
+                if (matchSettings(settings, track)) {
+                    tracks.push(track);
+                }
+            });
+        }
+
+        if (tracks.length === 0) {
+            setTrack(selectInitialTrack(type, tracksForType), true);
+        } else {
+            if (tracks.length > 1) {
+                setTrack(selectInitialTrack(type, tracks));
+            } else {
+                setTrack(tracks[0]);
+            }
+        }
+    }
+
+    /**
+     * @param {MediaInfo} track
+     * @memberof MediaController#
+     */
+    function addTrack(track) {
+        if (!track) return;
+
+        const mediaType = track.type;
+        if (!isMultiTrackSupportedByType(mediaType)) return;
+
+        let streamId = track.streamInfo.id;
+        if (!tracks[streamId]) {
+            tracks[streamId] = createTrackInfo();
+        }
+
+        const mediaTracks = tracks[streamId][mediaType].list;
+        for (let i = 0, len = mediaTracks.length; i &lt; len; ++i) {
+            //track is already set.
+            if (isTracksEqual(mediaTracks[i], track)) {
+                return;
+            }
+        }
+
+        mediaTracks.push(track);
+
+        let initSettings = getInitialSettings(mediaType);
+        if (initSettings &amp;&amp; (matchSettings(initSettings, track)) &amp;&amp; !getCurrentTrackFor(mediaType, track.streamInfo)) {
+            setTrack(track);
+        }
+    }
+
+    /**
+     * @param {string} type
+     * @param {StreamInfo} streamInfo
+     * @returns {Array}
+     * @memberof MediaController#
+     */
+    function getTracksFor(type, streamInfo) {
+        if (!type || !streamInfo) return [];
+
+        const id = streamInfo.id;
+
+        if (!tracks[id] || !tracks[id][type]) return [];
+
+        return tracks[id][type].list;
+    }
+
+    /**
+     * @param {string} type
+     * @param {StreamInfo} streamInfo
+     * @returns {Object|null}
+     * @memberof MediaController#
+     */
+    function getCurrentTrackFor(type, streamInfo) {
+        if (!type || !streamInfo || (streamInfo &amp;&amp; !tracks[streamInfo.id])) return null;
+        return tracks[streamInfo.id][type].current;
+    }
+
+    /**
+     * @param {MediaInfo} track
+     * @returns {boolean}
+     * @memberof MediaController#
+     */
+    function isCurrentTrack(track) {
+        if (!track) {
+            return false;
+        }
+        const type = track.type;
+        const id = track.streamInfo.id;
+
+        return (tracks[id] &amp;&amp; tracks[id][type] &amp;&amp; isTracksEqual(tracks[id][type].current, track));
+    }
+
+    /**
+     * @param {MediaInfo} track
+     * @param {boolean} noSettingsSave specify if settings must be not be saved
+     * @memberof MediaController#
+     */
+    function setTrack(track, noSettingsSave) {
+        if (!track || !track.streamInfo) return;
+
+        const type = track.type;
+        const streamInfo = track.streamInfo;
+        const id = streamInfo.id;
+        const current = getCurrentTrackFor(type, streamInfo);
+
+        if (!tracks[id] || !tracks[id][type] || isTracksEqual(track, current)) return;
+
+        tracks[id][type].current = track;
+
+        if (tracks[id][type].current &amp;&amp; !(noSettingsSave &amp;&amp; type === Constants.FRAGMENTED_TEXT)) {
+            eventBus.trigger(Events.CURRENT_TRACK_CHANGED, {oldMediaInfo: current, newMediaInfo: track, switchMode: switchMode[type]});
+        }
+
+        if (!noSettingsSave) {
+
+            let settings = extractSettings(track);
+
+            if (!settings || !tracks[id][type].storeLastSettings) return;
+
+            if (settings.roles) {
+                settings.role = settings.roles[0];
+                delete settings.roles;
+            }
+
+            if (settings.accessibility) {
+                settings.accessibility = settings.accessibility[0];
+            }
+
+            if (settings.audioChannelConfiguration) {
+                settings.audioChannelConfiguration = settings.audioChannelConfiguration[0];
+            }
+
+            domStorage.setSavedMediaSettings(type, settings);
+        }
+    }
+
+    /**
+     * @param {string} type
+     * @param {Object} value
+     * @memberof MediaController#
+     */
+    function setInitialSettings(type, value) {
+        if (!type || !value) return;
+
+        initialSettings[type] = value;
+    }
+
+    /**
+     * @param {string} type
+     * @returns {Object|null}
+     * @memberof MediaController#
+     */
+    function getInitialSettings(type) {
+        if (!type) return null;
+
+        return initialSettings[type];
+    }
+
+    /**
+     * @memberof MediaController#
+     */
+    function saveTextSettingsDisabled() {
+        domStorage.setSavedMediaSettings(Constants.FRAGMENTED_TEXT, null);
+    }
+
+    /**
+     * @param {string} type
+     * @param {string} mode
+     * @memberof MediaController#
+     */
+    function setSwitchMode(type, mode) {
+        const isModeSupported = (validTrackSwitchModes.indexOf(mode) !== -1);
+
+        if (!isModeSupported) {
+            logger.warn('Track switch mode is not supported: ' + mode);
+            return;
+        }
+
+        switchMode[type] = mode;
+    }
+
+    /**
+     * @param {string} type
+     * @returns {string} mode
+     * @memberof MediaController#
+     */
+    function getSwitchMode(type) {
+        return switchMode[type];
+    }
+
+    /**
+     * @param {string} mode
+     * @memberof MediaController#
+     */
+    function setSelectionModeForInitialTrack(mode) {
+        const isModeSupported = (validTrackSelectionModes.indexOf(mode) !== -1);
+
+        if (!isModeSupported) {
+            logger.warn('Track selection mode is not supported: ' + mode);
+            return;
+        }
+        selectionMode = mode;
+    }
+
+    /**
+     * @returns {string} mode
+     * @memberof MediaController#
+     */
+    function getSelectionModeForInitialTrack() {
+        return selectionMode || DEFAULT_INIT_TRACK_SELECTION_MODE;
+    }
+
+    /**
+     * @param {string} type
+     * @returns {boolean}
+     * @memberof MediaController#
+     */
+    function isMultiTrackSupportedByType(type) {
+        return (type === Constants.AUDIO || type === Constants.VIDEO || type === Constants.TEXT ||
+            type === Constants.FRAGMENTED_TEXT || type === Constants.IMAGE);
+    }
+
+    /**
+     * @param {MediaInfo} t1 - first track to compare
+     * @param {MediaInfo} t2 - second track to compare
+     * @returns {boolean}
+     * @memberof MediaController#
+     */
+    function isTracksEqual(t1, t2) {
+        if (!t1 &amp;&amp; !t2) {
+            return true;
+        }
+
+        if (!t1 || !t2) {
+            return false;
+        }
+
+        const sameId = t1.id === t2.id;
+        const sameViewpoint = t1.viewpoint === t2.viewpoint;
+        const sameLang = t1.lang === t2.lang;
+        const sameRoles = t1.roles.toString() === t2.roles.toString();
+        const sameAccessibility = t1.accessibility.toString() === t2.accessibility.toString();
+        const sameAudioChannelConfiguration = t1.audioChannelConfiguration.toString() === t2.audioChannelConfiguration.toString();
+
+        return (sameId &amp;&amp; sameViewpoint &amp;&amp; sameLang &amp;&amp; sameRoles &amp;&amp; sameAccessibility &amp;&amp; sameAudioChannelConfiguration);
+    }
+
+    function setConfig(config) {
+        if (!config) return;
+
+        if (config.domStorage) {
+            domStorage = config.domStorage;
+        }
+    }
+
+    /**
+     * @memberof MediaController#
+     */
+    function reset() {
+        tracks = {};
+        resetInitialSettings();
+        resetSwitchMode();
+    }
+
+    function extractSettings(mediaInfo) {
+        const settings = {
+            lang: mediaInfo.lang,
+            viewpoint: mediaInfo.viewpoint,
+            roles: mediaInfo.roles,
+            accessibility: mediaInfo.accessibility,
+            audioChannelConfiguration: mediaInfo.audioChannelConfiguration
+        };
+        let notEmpty = settings.lang || settings.viewpoint || (settings.role &amp;&amp; settings.role.length > 0) ||
+        (settings.accessibility &amp;&amp; settings.accessibility.length > 0) || (settings.audioChannelConfiguration &amp;&amp; settings.audioChannelConfiguration.length > 0);
+
+        return notEmpty ? settings : null;
+    }
+
+    function matchSettings(settings, track) {
+        const matchLang = !settings.lang || (track.lang.match(settings.lang));
+        const matchViewPoint = !settings.viewpoint || (settings.viewpoint === track.viewpoint);
+        const matchRole = !settings.role || !!track.roles.filter(function (item) {
+            return item === settings.role;
+        })[0];
+        let matchAccessibility = !settings.accessibility || !!track.accessibility.filter(function (item) {
+            return item === settings.accessibility;
+        })[0];
+        let matchAudioChannelConfiguration = !settings.audioChannelConfiguration || !!track.audioChannelConfiguration.filter(function (item) {
+            return item === settings.audioChannelConfiguration;
+        })[0];
+
+        return (matchLang &amp;&amp; matchViewPoint &amp;&amp; matchRole &amp;&amp; matchAccessibility &amp;&amp; matchAudioChannelConfiguration);
+    }
+
+    function resetSwitchMode() {
+        switchMode = {
+            audio: TRACK_SWITCH_MODE_ALWAYS_REPLACE,
+            video: TRACK_SWITCH_MODE_NEVER_REPLACE
+        };
+    }
+
+    function resetInitialSettings() {
+        initialSettings = {
+            audio: null,
+            video: null,
+            fragmentedText: null
+        };
+    }
+
+    function selectInitialTrack(type, tracks) {
+        if (type === Constants.FRAGMENTED_TEXT) return tracks[0];
+
+        let mode = getSelectionModeForInitialTrack();
+        let tmpArr = [];
+
+        const getTracksWithHighestBitrate = function (trackArr) {
+            let max = 0;
+            let result = [];
+            let tmp;
+
+            trackArr.forEach(function (track) {
+                tmp = Math.max.apply(Math, track.bitrateList.map(function (obj) { return obj.bandwidth; }));
+
+                if (tmp > max) {
+                    max = tmp;
+                    result = [track];
+                } else if (tmp === max) {
+                    result.push(track);
+                }
+            });
+
+            return result;
+        };
+        const getTracksWithWidestRange = function (trackArr) {
+            let max = 0;
+            let result = [];
+            let tmp;
+
+            trackArr.forEach(function (track) {
+                tmp = track.representationCount;
+
+                if (tmp > max) {
+                    max = tmp;
+                    result = [track];
+                } else if (tmp === max) {
+                    result.push(track);
+                }
+            });
+
+            return result;
+        };
+
+        switch (mode) {
+            case TRACK_SELECTION_MODE_HIGHEST_BITRATE:
+                tmpArr = getTracksWithHighestBitrate(tracks);
+
+                if (tmpArr.length > 1) {
+                    tmpArr = getTracksWithWidestRange(tmpArr);
+                }
+                break;
+            case TRACK_SELECTION_MODE_WIDEST_RANGE:
+                tmpArr = getTracksWithWidestRange(tracks);
+
+                if (tmpArr.length > 1) {
+                    tmpArr = getTracksWithHighestBitrate(tracks);
+                }
+                break;
+            default:
+                logger.warn('Track selection mode is not supported: ' + mode);
+                break;
+        }
+
+        return tmpArr[0];
+    }
+
+    function createTrackInfo() {
+        return {
+            audio: {
+                list: [],
+                storeLastSettings: true,
+                current: null
+            },
+            video: {
+                list: [],
+                storeLastSettings: true,
+                current: null
+            },
+            text: {
+                list: [],
+                storeLastSettings: true,
+                current: null
+            },
+            fragmentedText: {
+                list: [],
+                storeLastSettings: true,
+                current: null
+            },
+            image: {
+                list: [],
+                storeLastSettings: true,
+                current: null
+            }
+        };
+    }
+
+    instance = {
+        checkInitialMediaSettingsForType: checkInitialMediaSettingsForType,
+        addTrack: addTrack,
+        getTracksFor: getTracksFor,
+        getCurrentTrackFor: getCurrentTrackFor,
+        isCurrentTrack: isCurrentTrack,
+        setTrack: setTrack,
+        setInitialSettings: setInitialSettings,
+        getInitialSettings: getInitialSettings,
+        setSwitchMode: setSwitchMode,
+        getSwitchMode: getSwitchMode,
+        setSelectionModeForInitialTrack: setSelectionModeForInitialTrack,
+        getSelectionModeForInitialTrack: getSelectionModeForInitialTrack,
+        isMultiTrackSupportedByType: isMultiTrackSupportedByType,
+        isTracksEqual: isTracksEqual,
+        matchSettings: matchSettings,
+        saveTextSettingsDisabled: saveTextSettingsDisabled,
+        setConfig: setConfig,
+        reset: reset
+    };
+
+    setup();
+
+    return instance;
+}
+
+MediaController.__dashjs_factory_name = 'MediaController';
+const factory = FactoryMaker.getSingletonFactory(MediaController);
+factory.TRACK_SWITCH_MODE_NEVER_REPLACE = TRACK_SWITCH_MODE_NEVER_REPLACE;
+factory.TRACK_SWITCH_MODE_ALWAYS_REPLACE = TRACK_SWITCH_MODE_ALWAYS_REPLACE;
+factory.TRACK_SELECTION_MODE_HIGHEST_BITRATE = TRACK_SELECTION_MODE_HIGHEST_BITRATE;
+factory.TRACK_SELECTION_MODE_WIDEST_RANGE = TRACK_SELECTION_MODE_WIDEST_RANGE;
+factory.DEFAULT_INIT_TRACK_SELECTION_MODE = DEFAULT_INIT_TRACK_SELECTION_MODE;
+FactoryMaker.updateSingletonFactory(MediaController.__dashjs_factory_name, factory);
+export default factory;
+</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	<h3>Dash.js <a href="http://gruntjs.com/"><img src="https://gruntjs.com/cdn/builtwith.png" alt="Built with Grunt"></a></h3>
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a>
+	
+		on Sat Nov 14th 2020
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

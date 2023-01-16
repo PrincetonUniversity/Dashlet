@@ -1,0 +1,8 @@
+selenium
+flask
+flask_cors
+numpy
+PyVirtualDisplay
+webdriver-manager
+kaitaistruct
+mitmproxy

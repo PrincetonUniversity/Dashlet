@@ -1,0 +1,1 @@
+The content server uses Nginx to server dash files
