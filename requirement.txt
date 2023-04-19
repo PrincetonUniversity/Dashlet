@@ -6,3 +6,5 @@ PyVirtualDisplay
 webdriver-manager
 kaitaistruct
 mitmproxy
+matplotlib
+statsmodels

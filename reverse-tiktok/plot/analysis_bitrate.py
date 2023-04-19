@@ -9,6 +9,8 @@ from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 plt.rcParams.update({'font.size': 18})
 plt.rcParams["font.family"] = "Times New Roman"
+plt.rcParams['pdf.fonttype'] = 42
+plt.rcParams['ps.fonttype'] = 42
 
 def get_download_range(range_str):
     range_items = range_str.split()

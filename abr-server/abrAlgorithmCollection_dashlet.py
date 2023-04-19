@@ -524,7 +524,6 @@ def tt_order(events, probability_weights, bitrate_profile, estimate_throughput):
     if max_buffer_i == -1:
         return ret
 
-
     # for i in range(nvideos):
     #     j = buffer_length[i]
     #

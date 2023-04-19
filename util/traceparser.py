@@ -26,6 +26,14 @@ class swipetraceparser:
     def get_ts_list(self):
         return self.ts_list
 
+    def get_watch_time(self):
+        watch_time_list = [60]
+
+        for i in range(1, len(self.ts_list)):
+            watch_time_list.append(self.ts_list[i] - self.ts_list[i-1])
+        
+        return watch_time_list
+
 
 class downloadtraceparser:
 

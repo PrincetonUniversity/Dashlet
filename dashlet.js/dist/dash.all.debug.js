@@ -52008,6 +52008,14 @@ function ABRRulesCollection(config) {
         return quality;
     }
 
+    // function getMaxQuality(rulesContext) {
+    //     const switchRequestArray = qualitySwitchRules.map(rule => rule.getMaxIndex(rulesContext));
+    //     const activeRules = getActiveRules(switchRequestArray);
+    //     const maxQuality = getMinSwitchRequest(activeRules);
+
+    //     return maxQuality || SwitchRequest(context).create();
+    // }
+
     function getMaxQuality(rulesContext, chunksize_list) {
         var playerId = arguments.length <= 2 || arguments[2] === undefined ? -1 : arguments[2];
         var lastRequestedv = arguments.length <= 3 || arguments[3] === undefined ? -1 : arguments[3];
@@ -52017,14 +52025,13 @@ function ABRRulesCollection(config) {
         var currentPlayerIdx = arguments.length <= 7 || arguments[7] === undefined ? 0 : arguments[7];
         var url = arguments.length <= 8 || arguments[8] === undefined ? "" : arguments[8];
 
-        var switchRequestArray = qualitySwitchRules.map(function (rule) {
-            return rule.getMaxIndex(rulesContext);
-        });
+        // const switchRequestArray = qualitySwitchRules.map(rule => rule.getMaxIndex(rulesContext));
 
         var quality = decodeRuleConext(rulesContext, playerId, lastRequestedv, lastRequesteda, last_quality, rebuffer, currentPlayerIdx, url, chunksize_list);
 
-        if (quality != -2) {}
+        // if (quality != -2) {
         // console.log("QUALITY RETURNED IS: " + quality);
+        // }
 
         // const activeRules = getActiveRules(switchRequestArray);
 

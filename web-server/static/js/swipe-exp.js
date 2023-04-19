@@ -2,46 +2,33 @@ var player = dashjs.SuperPlayer().create();
 
 var view = document.getElementById('example-video');
 
-// var view;
+// var serverip = "{{ serverip }}";
 
-// // superplayer = dashjs.SuperPlayer().create();
-// var videoContainer = document.getElementById('starter-template');
-// if (!view) {
-//     view = document.createElement('example-video');
-//     view.controls = true;
-//     videoContainer.appendChild(view);
-// }
+console.log("serverip");
+console.log(typeof(serverip));
+console.log(serverip);
+console.log("serverip");
 
-// 172.29.130.16
-// 172.29.114.202
-var cdnaddress = 'http://100.64.0.1:8080/dash/data/';
+var cdnaddress = 'http://'+serverip+':8080/dash/data/';
 
-// var cdnaddress = 'http://127.0.0.1:8080/dash/data/';
-
-var thisVideo = '5904810145583287557';
+var thisVideo = 'startvideo';
 var requestvideo = '';
 
 var nextVideo = '';
 var preVideo = '';
 var swaptmp = '';
 
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const traceid = urlParams.get('traceid');
 
+console.log(traceid);
 
 $.getJSON('/getNeighbour', {
-    vid: thisVideo}, function(data) {
+    vid: thisVideo,  traceid: traceid}, function(data) {
     preVideo = data.uidPre;
     nextVideo = data.uidNext;
 });
-
-// get all the 
-
-// for (var i=0; i<7; i++) {
-
-
-//     // await new Promise(r => setTimeout(r, 500));
-
-    
-// }
 
 var intervalID = setInterval(
     function(){
@@ -61,7 +48,7 @@ var intervalID = setInterval(
             requestvideo = nextVideo;
         
             $.getJSON('/getNeighbour', {
-                vid: requestvideo}, function(data) {
+                vid: requestvideo, traceid: traceid}, function(data) {
                 preVideo = data.uidPre;
                 nextVideo = data.uidNext;
 
@@ -76,53 +63,7 @@ var intervalID = setInterval(
 player.attachView(view);
 
 
-
-
-// player.ready(function() {
-//     player.src({
-//         src: cdnaddress + thisVideo + '/manifest.mpd',
-//         type: 'application/dash+xml'
-//     });
-//     player.play();
-// });
-
-
 var start = null;
-
-
-window.addEventListener("touchstart",function(event){
-
-    if (event.touches.length === 1) {
-        //just one finger touched
-        start = event.touches.item(0).clientX;
-    } else {
-        //a second finger hit the screen, abort the touch
-        start = null;
-    }
-});
-
-window.addEventListener("touchend",function(event){
-
-    var offset = 100;//at least 100px are a swipe
-
-    if (start) {
-        //the only finger that hit the screen left it
-        var end = event.changedTouches.item(0).clientX;
-
-        if(end > start + offset){
-            
-
-        }
-
-
-        if(end < start - offset ){
-
-            player.playNext();
-
-        }
-    }
-
-});
 
 
 function toNextVideo() {

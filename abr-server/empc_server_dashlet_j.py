@@ -18,6 +18,9 @@ os.environ['CUDA_VISIBLE_DEVICES']=''
 
 import time
 
+
+this_folder_path = os.path.dirname(os.path.abspath(__file__))
+
 LOG_FILE = './results/log'
 
 CHUNK_LENGTH = 5.0
@@ -275,6 +278,8 @@ def make_request_handler(input_dict, logger, throughput_estimator):
                     print("Compute Time: %f" %(etime - stime))
                     self.input_dict["ITER_CNT"] += 1
 
+                tmp = 1
+
             # generate return
             return_code = input_dict["buffer_plan"][idx]
             send_data = str.encode(str(return_code))
@@ -333,7 +338,7 @@ def main(args):
 if __name__ == "__main__":
     try:
         parser = argparse.ArgumentParser()
-        parser.add_argument('--probabilitytraces', default='./probability/run/', help='The path for probability map')
+        parser.add_argument('--probabilitytraces', default='./probability/lamda2/', help='The path for probability map')
         parser.add_argument('--logfile', default='./out.log', help='The path to save processed data')
         # parser.add_argument('--playtrace', default="/home/acer/Documents/reverse-tiktok/data/trace-5.0-swipe-4/trace-5.0-swipe-4-play.csv", help='Play sequence')
         args = parser.parse_args()

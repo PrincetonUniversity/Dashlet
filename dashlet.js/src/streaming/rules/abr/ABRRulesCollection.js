@@ -285,22 +285,17 @@ function ABRRulesCollection(config) {
         return quality;
     }
 
+    // function getMaxQuality(rulesContext) {
+    //     const switchRequestArray = qualitySwitchRules.map(rule => rule.getMaxIndex(rulesContext));
+    //     const activeRules = getActiveRules(switchRequestArray);
+    //     const maxQuality = getMinSwitchRequest(activeRules);
+
+    //     return maxQuality || SwitchRequest(context).create();
+    // }
+
     function getMaxQuality(rulesContext, chunksize_list, playerId=-1, lastRequestedv=-1, lastRequesteda=-1, last_quality=0, rebuffer=0, currentPlayerIdx=0, url="") {
 
-        const switchRequestArray = qualitySwitchRules.map(rule => rule.getMaxIndex(rulesContext));
-
         var quality = decodeRuleConext(rulesContext, playerId, lastRequestedv, lastRequesteda, last_quality, rebuffer, currentPlayerIdx, url, chunksize_list);
-
-        if (quality != -2) {
-            // console.log("QUALITY RETURNED IS: " + quality);
-        }
-        
-
-        // const activeRules = getActiveRules(switchRequestArray);
-
-        // const maxQuality = getMinSwitchRequest(activeRules);
-
-        // return maxQuality || SwitchRequest(context).create();
 
         return SwitchRequest(context).create(quality) // get the quality from python server.
     }
